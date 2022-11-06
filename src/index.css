@@ -1,0 +1,60 @@
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.btn, .btn:focus, .btn:active:focus, .btn.active:focus{
+  outline:none!important;
+  box-shadow:none!important;
+}
+
+.shadow{
+  box-shadow: 0 0 30px rgba(0,0,0,1) !important;
+}
+
+#root{
+  overflow-y: hidden;
+}
+
+.text-grey{
+  color: grey;
+}
+.text-grey-light{
+  color: grey;
+}
+
+.text-grey:hover{
+  color: #212529;
+}
+.text-grey-light:hover{
+  color: white;
+}
+
+.greenBtn{
+  background-color: #ffce0f;
+  border-color: #ffce0f;
+  color: black;
+
+}
+
+.fieldNotation{
+  font-size: 0.8rem;
+  color: #838381;
+}
+
+.MuiInputLabel-root{
+  padding-left: 0.5rem !important;
+  padding-right: 0.5rem !important;
+}
+
+.disableMuiCheckPadding .MuiCheckbox-root{
+  padding: 0 !important;
+}

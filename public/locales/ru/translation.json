@@ -1,0 +1,61 @@
+{
+  "vesa": {
+
+    "auth": {
+      "login": "Логин",
+      "pass": "Пароль",
+      "btn": "Войти",
+      "auth": "Авторизация"
+    },
+
+    "navbar": {
+      "logOutTooltip": "Выйти",
+      "logInTooltip": "Войти",
+
+      "fields": "Участки",
+
+      "appointments": "Назначения",
+      "unitToRoute": "Транспорт на маршруты",
+
+      "logistics": "Логистика",
+      "registry": "Журнал перемещений",
+      "storage": "Склады",
+
+      "guide": "Справочники",
+
+      "values": "ТМЦ",
+
+      "materials": "Материалы",
+      "materialTypes": "Типы материалов",
+      "measure": "Единицы измерения",
+
+      "transport": "Транспортные",
+
+      "carMachinesGroups": "Группы оъектов",
+      "carMachines": "Объекты",
+      "carTypes": "Типы объектов",
+      "carModels": "Модели объектов",
+      "fuelTypes": "Виды топлива",
+      "routes": "Маршруты",
+
+      "admin": "Административные",
+
+      "organizations": "Организации",
+      "users": "Пользователи",
+      "branches": "Карьеры",
+      "drivers": "Работники",
+      "staff": "Сотрудники",
+
+
+      "warehouses": "Склады",
+      "warehousesGroups": "Группы складов",
+      "monitoring": "Мониторинг",
+
+      "reports": "Отчеты",
+      "report": "Отчет",
+      "dashboard": "Dashboard"
+    }
+
+  }
+
+}
