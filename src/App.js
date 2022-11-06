@@ -38,11 +38,18 @@ export default function App() {
                             note: "Массив картинок. Приходят как formData.",
                         },
                     ],
-                    paramsExample: {
+                    /*paramsExample: {
                         title: "Lorem ipsum",
                         text: "Lorem ipsum ".repeat(120),
                         imgs: "Картинки в formData",
-                    }
+                    },*/
+                    responses: [
+                        {
+                            code: 500,
+                            msg: 'Something get wrong :(',
+                            note: "Внутренняя ошибка"
+                        },
+                    ]
                 }
             ]
         }

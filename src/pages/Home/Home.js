@@ -53,10 +53,10 @@ export default function Home({nav}){
                 </div>
             )
 
-        let method = (nav.find(el => el.k === paths[0])?.items || []).find(el => el.k === paths[1])
-        console.log(method)
+        let methodObj = (nav.find(el => el.k === paths[0])?.items || []).find(el => el.k === paths[1])
+        console.log(methodObj)
 
-        if(!method)
+        if(!methodObj)
             return (
                 <div className="w-100 p-5">
                     <div className="rounded-3 p-2 text-center" style={colors.bad}>
@@ -65,48 +65,81 @@ export default function Home({nav}){
                 </div>
             )
 
+        let {method, name, note, params, responses} = methodObj
+
         return (
             <div className="w-100 px-2 pt-3" key={pathNow}>
                 <div className={"mb-2 rounded-3 fw-bold p-2 bg-dark text-white" + center()}>
-                    <div className="pe-2">{renderMethodType(method.method)}</div>
+                    <div className="pe-2">{renderMethodType(method)}</div>
                     {"Метод " + pathNow}
                 </div>
 
                 <div className={"py-2" + center('start')}>
                     <div className="fw-bold pe-2">{"Описание:"}</div>
-                    <div className="">{method.name}</div>
+                    <div className="">{name}</div>
                 </div>
 
                 {
-                    method.note &&
+                    note &&
                         <div className={"py-2" + center('start')}>
                             <div className="fw-bold pe-2">{"Прмиечание:"}</div>
-                            <div className="">{method.note}</div>
+                            <div className="">{note}</div>
                         </div>
                 }
 
-                <div className={"py-2" + center('start', 'top')}>
-                    <div className="fw-bold pe-2">{"Параметры:"}</div>
-                    <div className="ps-3 w-100">
-                        {
-                            method.params.map(({k, name, note, limitations}) => (
-                                <div className="w-100 mb-2 p-2 border border-dark rounded-3" key={k}>
-                                    <div className={center('start')}>
-                                        <div className="fw-bold pe-3">{name}</div>
-                                        {k}
-                                    </div>
-                                    { note && <div className="text-grey" style={{fontSize: "0.8rem"}}>{note}</div>}
-                                    {
-                                        limitations && <div className="text-grey" style={{fontSize: "0.8rem"}}>
-                                            {limitations.min ? "От " + limitations.min : null}
-                                            {limitations.max ? (limitations.min ? " до" : "До") + " " + limitations.max : null}
+                {
+                    params && params.length &&
+                    <div className={"py-2" + center('start', 'top')}>
+                        <div className="fw-bold pe-2">{"Параметры:"}</div>
+                        <div className="ps-3 w-100">
+                            {
+                                params.map(({k, name, note, limitations}) => (
+                                    <div className="w-100 mb-2 p-2 border border-dark rounded-3 bg-white" key={k}>
+                                        <div className={center('start')}>
+                                            <div className="fw-bold pe-3">{name}</div>
+                                            {k}
                                         </div>
-                                    }
-                                </div>
-                            ))
-                        }
+                                        {note && <div className="text-grey" style={{fontSize: "0.8rem"}}>{note}</div>}
+                                        {
+                                            limitations && <div className="text-grey" style={{fontSize: "0.8rem"}}>
+                                                {limitations.min ? "От " + limitations.min : null}
+                                                {limitations.max ? (limitations.min ? " до" : "До") + " " + limitations.max : null}
+                                            </div>
+                                        }
+                                    </div>
+                                ))
+                            }
+                        </div>
                     </div>
-                </div>
+                }
+
+                {
+                    responses && responses.length &&
+                    <div className={"py-2" + center('start', 'top')}>
+                        <div className="fw-bold pe-2">{"Ответы:"}</div>
+                        <div className="ps-3 w-100">
+                            {
+                                responses.map(({code, msg, note}, i) => (
+                                    <div
+                                        className="w-100 mb-2 p-2 border border-dark rounded-3"
+                                        style={
+                                            code < 300 ? colors.good : (
+                                                code < 400 ? colors.middle : colors.bad
+                                            )
+                                        }
+                                        key={i}
+                                    >
+                                        <div className={center('start')}>
+                                            <div className="fw-bold pe-3">{code}</div>
+                                            {msg}
+                                        </div>
+                                        { note && <div className="text-grey" style={{fontSize: "0.8rem"}}>{note}</div>}
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    </div>
+                }
 
             </div>
         )
