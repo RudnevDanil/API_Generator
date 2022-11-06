@@ -122,14 +122,14 @@ export default function Home({nav}){
                 }}
             >
                 <div
-                    className={"row m-0 mw-100 py-2" + center()}
+                    className={"row m-0 mw-100 py-2 fw-bold" + center()}
                     style={{
                         borderBottom: "1px solid white",
                         borderTop: "1px solid white",
                     }}
                 >
-                    <div className={"col-4" + center()}><img src={logoImg} alt="..." className="pe-2" style={{width: "2rem"}}/></div>
-                    <div className={"col-8 fw-bold" + center()}>{"VanSpot API"}</div>
+                    <img src={logoImg} alt="..." className="pe-2" style={{width: "3.5rem"}}/>
+                    {"VanSpot API"}
                 </div>
 
                 {
