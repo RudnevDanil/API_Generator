@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {NavLink, Outlet, useLocation} from 'react-router-dom';
 import {center} from "../../functions";
 import logoImg from "../../imgs/vanSpotLogo.png"
+//import { ReactComponent as Logo } from "../../imgs/swords.svg"
 import {colors} from "../../constants";
 
 export default function Home({nav}){
@@ -164,6 +165,8 @@ export default function Home({nav}){
                     <img src={logoImg} alt="..." className="pe-2" style={{width: "3.5rem"}}/>
                     {"VanSpot API"}
                 </div>
+
+                {/*<Logo fill='red' stroke='green'/>*/}
 
                 {
                     nav.map(nEl => (

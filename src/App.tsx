@@ -1,10 +1,43 @@
-import React from 'react';
+//import React from 'react';
 import {Routes, Route, BrowserRouter} from 'react-router-dom';
 import {SnackbarProvider} from "notistack";
 import "moment/locale/ru";
 import "moment/locale/en-gb";
 
 import Home from "./pages/Home/Home";
+
+
+export interface IParam {
+    k: string;
+    name: string;
+    limitations?: {
+        max: number,
+        min: number,
+    },
+    note?: string;
+}
+
+export interface IResponse {
+    code: number;
+    msg: string;
+    note?: string;
+}
+
+export interface IMethod {
+    k: string;
+    method: "get" | "post" | "put";
+    name: string;
+    shortName: string;
+    note?: string;
+    params: IParam[],
+    responses: IResponse[],
+}
+
+export interface IMethodGroup {
+    k: string;
+    name: string;
+    items: IMethod[]
+}
 
 export default function App() {
 

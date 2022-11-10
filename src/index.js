@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from "./App"
+import App from "./App.tsx"
 import './i18n';
 import "./index.css"
 
