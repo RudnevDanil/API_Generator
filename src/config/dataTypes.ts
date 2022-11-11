@@ -6,20 +6,41 @@ export type TParam = {
         min: number,
     },
     note?: string;
+    defaultValue?: string,
+    authOnly?: boolean,
+    hUserOnly?: boolean,
+}
+
+export type TOutParamTypes = "string" | "int" | "float" | "bool" | "MongoId"
+
+export type TOutParam = "MongoId" | {
+    key: string,
+    type: TOutParamTypes,
+    min?: number,
+    max?: number,
+    isOptional?: boolean,
+    authOnly?: boolean,
+    hUserOnly?: boolean,
+    note?: string,
 }
 
 export type TResponse = {
     code: number;
-    msg: string;
+    msg?: string;
+    params?: TOutParam[];
     note?: string;
 }
 
+export type TMethodTypes = "get" | "post" | "put" | "delete"
+
 export type TMethod = {
     k: string;
-    method: "get" | "post" | "put";
+    method: TMethodTypes;
     name: string;
     shortName: string;
     note?: string;
+    authOnly?: boolean,
+    hUserOnly?: boolean,
     params: TParam[],
     responses: TResponse[],
 }

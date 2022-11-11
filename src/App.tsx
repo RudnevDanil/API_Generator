@@ -7,13 +7,15 @@ import "moment/locale/en-gb";
 import Home from "./pages/Home/Home";
 import {TMethodGroup} from "./config/dataTypes";
 import {postGroup} from "./config/post/postGroup";
+import {sourceGroup} from "./config/source/sourceGroup";
 
 export default function App() {
 
 
 
     let nav : TMethodGroup[] = [
-        postGroup
+        postGroup,
+        sourceGroup,
     ]
 
     let _nav = [

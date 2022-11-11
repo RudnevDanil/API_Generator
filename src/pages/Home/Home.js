@@ -19,12 +19,25 @@ export default function Home({nav}){
         }
     }, [pathNow])
 
+    let makeMarkerIcon = ({icon, condition, color, defaultColor = colors.default.color}) => (
+        <i
+            className={`fs-5 textShadow ${icon}`}
+            style={{
+                color: condition ? color : defaultColor,
+                opacity: condition ? 1 : 0.2
+            }}
+        />
+    )
+
+    let makeAuthOnlyIcon = condition => makeMarkerIcon({icon: "fas fa-user", condition: condition, color: colors.blue.color})
+    let makeHUserOnlyIcon = condition => makeMarkerIcon({icon: "fas fa-chess-queen", condition: condition, color: "gold"})
+
     let renderMethodType = method => {
         let methodsArr = {
-            'post': {...colors.good, name: method.toUpperCase()},
+            'get': {...colors.good, name: method.toUpperCase()},
+            'post': {...colors.blue, name: method.toUpperCase()},
+            'put': {...colors.middle, name: method.toUpperCase()},
             'delete': {...colors.bad, name: method.toUpperCase()},
-            'update': {...colors.middle, name: method.toUpperCase()},
-            //'post': {...colors.blue, name: method.toUpperCase()},
         }
 
         let currMethod = methodsArr[method]
@@ -66,13 +79,17 @@ export default function Home({nav}){
                 </div>
             )
 
-        let {method, name, note, params, responses} = methodObj
+        let {method, name, note, params, responses, authOnly, hUserOnly} = methodObj
 
         return (
             <div className="w-100 px-2 pt-3" key={pathNow}>
                 <div className={"mb-2 rounded-3 fw-bold p-2 bg-dark text-white" + center()}>
                     <div className="pe-2">{renderMethodType(method)}</div>
                     {"Метод " + pathNow}
+                    <div className={"ps-2" + center('end')}>
+                        {authOnly && <div className="pe-2">{makeAuthOnlyIcon(authOnly)}</div>}
+                        {hUserOnly && <div className="pe-2">{makeAuthOnlyIcon(hUserOnly)}</div>}
+                    </div>
                 </div>
 
                 <div className={"py-2" + center('start')}>
@@ -94,11 +111,13 @@ export default function Home({nav}){
                         <div className="fw-bold pe-2">{"Параметры:"}</div>
                         <div className="ps-3 w-100">
                             {
-                                params.map(({k, name, note, limitations}) => (
+                                params.map(({k, name, note, limitations, defaultValue, authOnly, hUserOnly}) => (
                                     <div className="w-100 mb-2 p-2 border border-dark rounded-3 bg-white" key={k}>
                                         <div className={center('start')}>
-                                            <div className="fw-bold pe-3">{name}</div>
-                                            {k}
+                                            <div className="pe-2">{makeAuthOnlyIcon(authOnly)}</div>
+                                            <div className="pe-2">{makeHUserOnlyIcon(hUserOnly)}</div>
+                                            <div className="pe-3 fw-bold">{name}</div>
+                                            {k + (defaultValue && " = " + defaultValue)}
                                         </div>
                                         {note && <div className="text-grey" style={{fontSize: "0.8rem"}}>{note}</div>}
                                         {
@@ -193,11 +212,11 @@ export default function Home({nav}){
 
                             {
                                 openedBlocks.includes(nEl.k) ?
-                                    nEl.items.map(itEl => (
+                                    nEl.items.map(({k, shortName, method, authOnly, hUserOnly}) => (
                                         <NavLink
                                             className={"text-decoration-none text-white"}
-                                            to={nEl.k + '/' + itEl.k}
-                                            key={itEl.k}
+                                            to={nEl.k + '/' + k}
+                                            key={k}
                                         >
                                             <div
                                                 className="my-2 ps-3 rounded-3"
@@ -206,10 +225,16 @@ export default function Home({nav}){
                                                     borderRight: "1px solid white",
                                                 }}
                                             >
-                                                <div className={(paths.includes(itEl.k) ? "fw-bold" : "")}>{itEl.shortName}</div>
+                                                <div className={(paths.includes(k) ? "fw-bold" : "") + center('start')}>
+                                                    {shortName}
+                                                    <div className={"ps-2" + center('end')}>
+                                                        {authOnly && <div className="pe-2">{makeAuthOnlyIcon(authOnly)}</div>}
+                                                        {hUserOnly && <div className="pe-2">{makeHUserOnlyIcon(hUserOnly)}</div>}
+                                                    </div>
+                                                </div>
                                                 <div className={center('start')} style={{fontSize: "0.8rem", color: "lightgrey"}}>
-                                                    {renderMethodType(itEl.method)}
-                                                    <div className="ps-2">{"/" + itEl.k}</div>
+                                                    {renderMethodType(method)}
+                                                    <div className="ps-2">{"/" + k}</div>
                                                 </div>
                                             </div>
                                         </NavLink>
