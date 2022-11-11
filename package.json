@@ -1,8 +1,12 @@
 {
-  "name": "AgroPlanFront",
+  "name": "api_generator",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.3",
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.8",
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
     "@mui/lab": "^5.0.0-alpha.71",
