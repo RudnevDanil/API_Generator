@@ -5,43 +5,18 @@ import "moment/locale/ru";
 import "moment/locale/en-gb";
 
 import Home from "./pages/Home/Home";
-
-
-export interface IParam {
-    k: string;
-    name: string;
-    limitations?: {
-        max: number,
-        min: number,
-    },
-    note?: string;
-}
-
-export interface IResponse {
-    code: number;
-    msg: string;
-    note?: string;
-}
-
-export interface IMethod {
-    k: string;
-    method: "get" | "post" | "put";
-    name: string;
-    shortName: string;
-    note?: string;
-    params: IParam[],
-    responses: IResponse[],
-}
-
-export interface IMethodGroup {
-    k: string;
-    name: string;
-    items: IMethod[]
-}
+import {TMethodGroup} from "./config/dataTypes";
+import {postGroup} from "./config/post/postGroup";
 
 export default function App() {
 
-    let nav = [
+
+
+    let nav : TMethodGroup[] = [
+        postGroup
+    ]
+
+    let _nav = [
         {
             k: "post",
             name: "Пост",

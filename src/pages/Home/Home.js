@@ -155,16 +155,18 @@ export default function Home({nav}){
                     overflowY: "auto",
                 }}
             >
-                <div
-                    className={"row m-0 mw-100 py-2 fw-bold" + center()}
-                    style={{
-                        borderBottom: "1px solid white",
-                        borderTop: "1px solid white",
-                    }}
-                >
-                    <img src={logoImg} alt="..." className="pe-2" style={{width: "3.5rem"}}/>
-                    {"VanSpot API"}
-                </div>
+                <NavLink to={"/"} className={"text-decoration-none text-white"}>
+                    <div
+                        className={"row m-0 mw-100 py-2 fw-bold" + center()}
+                        style={{
+                            borderBottom: "1px solid white",
+                            borderTop: "1px solid white",
+                        }}
+                    >
+                        <img src={logoImg} alt="..." className="pe-2" style={{width: "3.5rem"}}/>
+                        {"VanSpot API"}
+                    </div>
+                </NavLink>
 
                 {/*<Logo fill='red' stroke='green'/>*/}
 
@@ -193,10 +195,7 @@ export default function Home({nav}){
                                 openedBlocks.includes(nEl.k) ?
                                     nEl.items.map(itEl => (
                                         <NavLink
-                                            className={
-                                                "text-decoration-none text-white"// +
-                                                //(pathNow.toLowerCase().indexOf(key.toLowerCase()) !== -1 ? "Active" : "")
-                                            }
+                                            className={"text-decoration-none text-white"}
                                             to={nEl.k + '/' + itEl.k}
                                             key={itEl.k}
                                         >
