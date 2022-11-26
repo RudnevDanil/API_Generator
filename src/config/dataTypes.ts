@@ -1,27 +1,27 @@
-export type TParam = {
+export type TInParam = {
     k: string;
     name: string;
     limitations?: {
-        max: number,
-        min: number,
+        min?: number,
+        max?: number,
     },
     note?: string;
     defaultValue?: string,
-    authOnly?: boolean,
-    hUserOnly?: boolean,
+    isOptional?: boolean // TODO realize
+    isAuthOnly?: boolean,
+    isHUserOnly?: boolean,
 }
 
-export type TOutParamTypes = "string" | "int" | "float" | "bool" | "MongoId"
+export type TOutParamTypes = "string" | "int" | "float" | "bool" | "MongoId" | "array" | "object"// TODO type array or object
 
-export type TOutParam = "MongoId" | {
-    key: string,
+export type TOutParam = {
+    k: string,
     type: TOutParamTypes,
-    min?: number,
-    max?: number,
-    isOptional?: boolean,
-    authOnly?: boolean,
-    hUserOnly?: boolean,
+    inner?: TOutParam[] | TOutParam, // for array and object
     note?: string,
+    isOptional?: boolean,
+    isAuthOnly?: boolean,
+    isHUserOnly?: boolean,
 }
 
 export type TResponse = {
@@ -39,9 +39,9 @@ export type TMethod = {
     name: string;
     shortName: string;
     note?: string;
-    authOnly?: boolean,
-    hUserOnly?: boolean,
-    params: TParam[],
+    isAuthOnly?: boolean,
+    isHUserOnly?: boolean,
+    params: TInParam[],
     responses: TResponse[],
 }
 

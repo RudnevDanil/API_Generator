@@ -4,6 +4,45 @@ import {center} from "../../functions";
 import logoImg from "../../imgs/vanSpotLogo.png"
 //import { ReactComponent as Logo } from "../../imgs/swords.svg"
 import {colors} from "../../constants";
+import {OutParam} from "../../components/OutParam/OutParam";
+import {Tooltip} from "@mui/material";
+import {Response} from "../../components/Response/Response";
+import {InParam} from "../../components/InParam/InParam";
+
+export let makeMarkerIcon = ({icon, condition, color, tooltip, defaultColor = colors.default.color}) => (
+    <div className={center()} style={{width: "1.3rem"}}>
+        <Tooltip title={tooltip}>
+            <i
+                className={`fs-5 textShadow ${icon}`}
+                style={{
+                    color: condition ? color : defaultColor,
+                    opacity: condition ? 1 : 0.2,
+                    cursor: "pointer"
+                }}
+            />
+        </Tooltip>
+    </div>
+)
+
+export let makeOptionalIcon = isOptional => makeMarkerIcon({
+    icon: `fas fa-${isOptional ? 'asterisk' : 'exclamation'}`,
+    condition: true, //isOptional,
+    tooltip: isOptional ? "Опицональный" : "Обязательный",
+    color: colors.blue.color
+})
+export let makeAuthOnlyIcon = isAuthOnly => makeMarkerIcon({
+    icon: `fas fa-user${isAuthOnly ? '-shield' : 's'}`,
+    condition: isAuthOnly,
+    tooltip: isAuthOnly ? "Только для авторизованных" : "Вне зависимости от авторизации",
+    color: colors.blue.color
+})
+export let makeHUserOnlyIcon = isHUserOnly => makeMarkerIcon({
+    icon: `fas fa-chess${isHUserOnly ? '-queen' : '-pawn'}`,
+    condition: isHUserOnly,
+    tooltip: isHUserOnly ? "Только для головного пользователя" : "Не только для головного пользователя",
+    color: "gold"
+})
+
 
 export default function Home({nav}){
 
@@ -18,19 +57,6 @@ export default function Home({nav}){
             setOpenedBlocks(prev => [...prev, paths[0]])
         }
     }, [pathNow])
-
-    let makeMarkerIcon = ({icon, condition, color, defaultColor = colors.default.color}) => (
-        <i
-            className={`fs-5 textShadow ${icon}`}
-            style={{
-                color: condition ? color : defaultColor,
-                opacity: condition ? 1 : 0.2
-            }}
-        />
-    )
-
-    let makeAuthOnlyIcon = condition => makeMarkerIcon({icon: "fas fa-user", condition: condition, color: colors.blue.color})
-    let makeHUserOnlyIcon = condition => makeMarkerIcon({icon: "fas fa-chess-queen", condition: condition, color: "gold"})
 
     let renderMethodType = method => {
         let methodsArr = {
@@ -55,7 +81,7 @@ export default function Home({nav}){
         )
     }
 
-    let renderPath = path => {
+    let renderPath = () => {
         let paths = pathNow.split('/').filter(el => el.length)
 
         if(paths.length < 2)
@@ -68,7 +94,6 @@ export default function Home({nav}){
             )
 
         let methodObj = (nav.find(el => el.k === paths[0])?.items || []).find(el => el.k === paths[1])
-        console.log(methodObj)
 
         if(!methodObj)
             return (
@@ -79,7 +104,7 @@ export default function Home({nav}){
                 </div>
             )
 
-        let {method, name, note, params, responses, authOnly, hUserOnly} = methodObj
+        let {method, name, note, params, responses, isAuthOnly, isHUserOnly} = methodObj
 
         return (
             <div className="w-100 px-2 pt-3" key={pathNow}>
@@ -87,8 +112,8 @@ export default function Home({nav}){
                     <div className="pe-2">{renderMethodType(method)}</div>
                     {"Метод " + pathNow}
                     <div className={"ps-2" + center('end')}>
-                        {authOnly && <div className="pe-2">{makeAuthOnlyIcon(authOnly)}</div>}
-                        {hUserOnly && <div className="pe-2">{makeAuthOnlyIcon(hUserOnly)}</div>}
+                        {isAuthOnly && <div className="pe-2">{makeAuthOnlyIcon(isAuthOnly)}</div>}
+                        {isHUserOnly && <div className="pe-2">{makeAuthOnlyIcon(isHUserOnly)}</div>}
                     </div>
                 </div>
 
@@ -109,26 +134,9 @@ export default function Home({nav}){
                     params && params.length &&
                     <div className={"py-2" + center('start', 'top')}>
                         <div className="fw-bold pe-2">{"Параметры:"}</div>
+                        {(() => {console.log("gp: ", params); return null})()}
                         <div className="ps-3 w-100">
-                            {
-                                params.map(({k, name, note, limitations, defaultValue, authOnly, hUserOnly}) => (
-                                    <div className="w-100 mb-2 p-2 border border-dark rounded-3 bg-white" key={k}>
-                                        <div className={center('start')}>
-                                            <div className="pe-2">{makeAuthOnlyIcon(authOnly)}</div>
-                                            <div className="pe-2">{makeHUserOnlyIcon(hUserOnly)}</div>
-                                            <div className="pe-3 fw-bold">{name}</div>
-                                            {k + (defaultValue && " = " + defaultValue)}
-                                        </div>
-                                        {note && <div className="text-grey" style={{fontSize: "0.8rem"}}>{note}</div>}
-                                        {
-                                            limitations && <div className="text-grey" style={{fontSize: "0.8rem"}}>
-                                                {limitations.min ? "От " + limitations.min : null}
-                                                {limitations.max ? (limitations.min ? " до" : "До") + " " + limitations.max : null}
-                                            </div>
-                                        }
-                                    </div>
-                                ))
-                            }
+                            {params.map(param => (<InParam {...param} key={param.k}/>))}
                         </div>
                     </div>
                 }
@@ -138,25 +146,7 @@ export default function Home({nav}){
                     <div className={"py-2" + center('start', 'top')}>
                         <div className="fw-bold pe-2">{"Ответы:"}</div>
                         <div className="ps-3 w-100">
-                            {
-                                responses.map(({code, msg, note}, i) => (
-                                    <div
-                                        className="w-100 mb-2 p-2 border border-dark rounded-3"
-                                        style={
-                                            code < 300 ? colors.good : (
-                                                code < 400 ? colors.middle : colors.bad
-                                            )
-                                        }
-                                        key={i}
-                                    >
-                                        <div className={center('start')}>
-                                            <div className="fw-bold pe-3">{code}</div>
-                                            {msg}
-                                        </div>
-                                        { note && <div className="text-grey" style={{fontSize: "0.8rem"}}>{note}</div>}
-                                    </div>
-                                ))
-                            }
+                            {responses.map((response, i) => <Response {...response} key={i}/>)}
                         </div>
                     </div>
                 }
@@ -212,7 +202,7 @@ export default function Home({nav}){
 
                             {
                                 openedBlocks.includes(nEl.k) ?
-                                    nEl.items.map(({k, shortName, method, authOnly, hUserOnly}) => (
+                                    nEl.items.map(({k, shortName, method, isAuthOnly, isHUserOnly}) => (
                                         <NavLink
                                             className={"text-decoration-none text-white"}
                                             to={nEl.k + '/' + k}
@@ -228,8 +218,8 @@ export default function Home({nav}){
                                                 <div className={(paths.includes(k) ? "fw-bold" : "") + center('start')}>
                                                     {shortName}
                                                     <div className={"ps-2" + center('end')}>
-                                                        {authOnly && <div className="pe-2">{makeAuthOnlyIcon(authOnly)}</div>}
-                                                        {hUserOnly && <div className="pe-2">{makeHUserOnlyIcon(hUserOnly)}</div>}
+                                                        {isAuthOnly && <div className="pe-2">{makeAuthOnlyIcon(isAuthOnly)}</div>}
+                                                        {isHUserOnly && <div className="pe-2">{makeHUserOnlyIcon(isHUserOnly)}</div>}
                                                     </div>
                                                 </div>
                                                 <div className={center('start')} style={{fontSize: "0.8rem", color: "lightgrey"}}>
@@ -246,8 +236,14 @@ export default function Home({nav}){
                 }
 
             </div>
-            <div className="col-9">
-                {renderPath(pathNow)}
+            <div
+                className="col-9"
+                 style={{
+                     height: "100vh",
+                     overflowY: "auto",
+                 }}
+            >
+                {renderPath()}
             </div>
         </div>
     )

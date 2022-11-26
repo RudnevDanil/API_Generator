@@ -1,6 +1,6 @@
-import {TParam} from "./dataTypes";
+import {TInParam} from "./dataTypes";
 
-export let titleParam : TParam = {
+export let titleParam : TInParam = {
     k: "title",
     name: "Название",
     limitations: {
@@ -9,12 +9,12 @@ export let titleParam : TParam = {
     }
 }
 
-export let textParam : TParam = {
+export let textParam : TInParam = {
     k: "text",
     name: "Текст",
 }
 
-export let imgsParam : TParam = {
+export let imgsParam : TInParam = {
     k: "imgs",
     name: "Картинки",
     note: "Массив картинок. Приходят как formData.",
