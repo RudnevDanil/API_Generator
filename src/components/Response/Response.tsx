@@ -1,9 +1,9 @@
-import {TResponse} from "../../config/dataTypes";
-import {center} from "../../functions";
 import React, {useState} from "react";
-import {colors} from "../../constants";
-import {OutParam} from "../OutParam/OutParam";
 import {Tooltip} from "@mui/material";
+import {TResponse} from "../../config/dataTypes";
+import {colors} from "../../constants";
+import {center} from "../../functions";
+import {OutParam} from "../OutParam/OutParam";
 
 
 export let Response = (

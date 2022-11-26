@@ -1,12 +1,9 @@
 import {TMethod} from "../../config/dataTypes";
 import {center} from "../../functions";
-import React, {useState} from "react";
-import {colors} from "../../constants";
-import {OutParam} from "../OutParam/OutParam";
-import {Tooltip} from "@mui/material";
+import React from "react";
+import {makeAuthOnlyIcon, renderMethodType} from "../../pages/Home/Home";
 import {InParam} from "../InParam/InParam";
 import {Response} from "../Response/Response";
-import {makeAuthOnlyIcon, renderMethodType} from "../../pages/Home/Home";
 
 
 export let Method = (

@@ -11,7 +11,6 @@ import {sourceGroup} from "./config/source/sourceGroup";
 
 export default function App() {
 
-
     let navConfig : TMethodGroup[] = [
         postGroup,
         sourceGroup,

@@ -1,12 +1,6 @@
 import {TMethod, TMethodGroup} from "../../config/dataTypes";
-import {center} from "../../functions";
-import React, {useState} from "react";
+import React from "react";
 import {colors} from "../../constants";
-import {OutParam} from "../OutParam/OutParam";
-import {Tooltip} from "@mui/material";
-import {InParam} from "../InParam/InParam";
-import {Response} from "../Response/Response";
-import {makeAuthOnlyIcon, renderMethodType} from "../../pages/Home/Home";
 import {Method} from "../Method/Method";
 
 

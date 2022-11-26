@@ -1,19 +1,14 @@
 import React, {ReactElement, useEffect, useState} from "react";
-import {NavLink, Outlet, useLocation} from 'react-router-dom';
+import {NavLink, useLocation} from 'react-router-dom';
 import {center} from "../../functions";
-//import logoImg from "../../imgs/vanSpotLogo.png" // TODO solve import
 //import { ReactComponent as Logo } from "../../imgs/swords.svg"
 import {colors} from "../../constants";
 import {Tooltip} from "@mui/material";
-import {Method} from "../../components/Method/Method";
-import {TMethod, TMethodGroup} from "../../config/dataTypes";
+import {TMethodGroup} from "../../config/dataTypes";
 import {Path} from "../../components/Path/Path";
+import {NavConfigTreeElement} from "../../components/NavConfigTreeElement/NavConfigTreeElement";
 
-type colorStyle = {
-    color: string,
-    backgroundColor: string,
-    average: string,
-}
+const logoImg = require("../../imgs/vanSpotLogo.png")
 
 export let makeMarkerIcon = (
     {
@@ -46,7 +41,7 @@ export let makeMarkerIcon = (
 
 export let makeOptionalIcon = (isOptional: boolean = false) => makeMarkerIcon({
     icon: `fas fa-${isOptional ? 'asterisk' : 'exclamation'}`,
-    condition: true, //isOptional,
+    condition: true,
     tooltip: isOptional ? "Опицональный" : "Обязательный",
     color: colors.blue.color
 })
@@ -57,7 +52,7 @@ export let makeAuthOnlyIcon = (isAuthOnly: boolean = false) => makeMarkerIcon({
     color: colors.blue.color
 })
 export let makeHUserOnlyIcon = (isHUserOnly: boolean = false) => makeMarkerIcon({
-    icon: `fas fa-chess${isHUserOnly ? '-queen' : '-pawn'}`,
+    icon: `fas fa-${isHUserOnly ? 'chess-queen' : 'user'}`,
     condition: isHUserOnly,
     tooltip: isHUserOnly ? "Только для головного пользователя" : "Не только для головного пользователя",
     color: "gold"
@@ -88,6 +83,10 @@ export let renderMethodType = (method: 'get' | 'post' | 'put' | 'delete') => {
 export default function Home({navConfig}: {navConfig: TMethodGroup[]}){
 
     const [openedBlocks, setOpenedBlocks] = useState<string[]>([])
+    const changeOpenStatus = (k: string) => setOpenedBlocks(prev => (
+        prev.includes(k) ? prev.filter(el => el !== k) : [...prev, k]
+    ))
+
     let {pathname: pathNow} = useLocation();
     let paths = pathNow.split('/').filter(el => el.length)
 
@@ -115,68 +114,24 @@ export default function Home({navConfig}: {navConfig: TMethodGroup[]}){
                             borderTop: "1px solid white",
                         }}
                     >
-                        {/*<img src={logoImg} alt="..." className="pe-2" style={{width: "3.5rem"}}/> TODO */}
+                        <img src={logoImg} alt="..." className="pe-2" style={{width: "3.5rem"}}/>
                         {"VanSpot API"}
                     </div>
                 </NavLink>
 
                 {/*<Logo fill='red' stroke='green'/>*/}
 
-                {/*
+                {
                     navConfig.map(nEl => (
-                        <div
-                            className="py-2 ps-2"
-                            style={{
-                                borderBottom: "1px solid white",
-                                cursor: 'pointer'
-                            }}
+                        <NavConfigTreeElement
+                            isPathIncludeKey={(k) => paths.includes(k)}
+                            isOpened={openedBlocks.includes(nEl.k)}
+                            changeOpenStatus={() => changeOpenStatus(nEl.k)}
+                            treeElement={nEl}
                             key={nEl.k}
-                        >
-                            <div
-                                className={center('start')}
-                                onClick={() => setOpenedBlocks(prev => ([...prev.filter(el => el !== nEl.k), (prev.includes(nEl.k) ? null : nEl.k)].filter(el => el)))}
-                            >
-                                <i className={`fas fa-chevron-${openedBlocks.includes(nEl.k) ? 'down' : 'right'}`}/>
-                                <div className={"ps-2 " + (paths.includes(nEl.k) ? "fw-bold" : "")} style={{userSelect: 'none'}}>{nEl.name}</div>
-                                <div className="ps-2" style={{fontSize: "0.8rem", color: "lightgrey"}}>
-                                    {"/" + nEl.k}
-                                </div>
-                            </div>
-
-                            {
-                                openedBlocks.includes(nEl.k) ?
-                                    nEl.items.map(({k, shortName, method, isAuthOnly, isHUserOnly}) => (
-                                        <NavLink
-                                            className={"text-decoration-none text-white"}
-                                            to={nEl.k + '/' + k}
-                                            key={k}
-                                        >
-                                            <div
-                                                className="my-2 ps-3 rounded-3"
-                                                style={{
-                                                    borderLeft: "1px solid white",
-                                                    borderRight: "1px solid white",
-                                                }}
-                                            >
-                                                <div className={(paths.includes(k) ? "fw-bold" : "") + center('start')}>
-                                                    {shortName}
-                                                    <div className={"ps-2" + center('end')}>
-                                                        {isAuthOnly && <div className="pe-2">{makeAuthOnlyIcon(isAuthOnly)}</div>}
-                                                        {isHUserOnly && <div className="pe-2">{makeHUserOnlyIcon(isHUserOnly)}</div>}
-                                                    </div>
-                                                </div>
-                                                <div className={center('start')} style={{fontSize: "0.8rem", color: "lightgrey"}}>
-                                                    {renderMethodType(method)}
-                                                    <div className="ps-2">{"/" + k}</div>
-                                                </div>
-                                            </div>
-                                        </NavLink>
-                                    ))
-                                    : null
-                            }
-                        </div>
+                        />
                     ))
-                */}
+                }
 
             </div>
             <div

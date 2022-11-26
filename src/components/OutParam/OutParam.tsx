@@ -1,7 +1,7 @@
+import React from "react";
 import {TOutParam} from "../../config/dataTypes";
 import {center} from "../../functions";
-import React, {useState} from "react";
-import {makeOptionalIcon, makeAuthOnlyIcon, makeHUserOnlyIcon} from "../../pages/Home/Home";
+import {makeAuthOnlyIcon, makeHUserOnlyIcon, makeOptionalIcon} from "../../pages/Home/Home";
 
 export let OutParam = (
     {

@@ -1,7 +1,7 @@
-import {TInParam} from "../../config/dataTypes";
-import {center} from "../../functions";
 import React from "react";
-import {makeOptionalIcon, makeAuthOnlyIcon, makeHUserOnlyIcon} from "../../pages/Home/Home";
+import {TInParam} from "../../config/dataTypes";
+import {makeAuthOnlyIcon, makeHUserOnlyIcon, makeOptionalIcon} from "../../pages/Home/Home";
+import {center} from "../../functions";
 
 export let InParam = (
     {
