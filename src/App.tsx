@@ -7,60 +7,13 @@ import "moment/locale/en-gb";
 import Home from "./pages/Home/Home";
 import {TMethodGroup} from "./config/dataTypes";
 import {postGroup} from "./config/post/postGroup";
+import {sourceGroup} from "./config/source/sourceGroup";
 
 export default function App() {
 
-
-
-    let nav : TMethodGroup[] = [
-        postGroup
-    ]
-
-    let _nav = [
-        {
-            k: "post",
-            name: "Пост",
-            items: [
-                {
-                    k: "create",
-                    shortName: "Создание",
-                    name: "Создание нового поста",
-                    note: "Работает через раз :(",
-                    method: "post",
-                    params: [
-                        {
-                            k: "title",
-                            name: "Название",
-                            limitations: {
-                                min: 10,
-                                max: 120,
-                            }
-                        },
-                        {
-                            k: "text",
-                            name: "Текст",
-                        },
-                        {
-                            k: "imgs",
-                            name: "Картинки",
-                            note: "Массив картинок. Приходят как formData.",
-                        },
-                    ],
-                    /*paramsExample: {
-                        title: "Lorem ipsum",
-                        text: "Lorem ipsum ".repeat(120),
-                        imgs: "Картинки в formData",
-                    },*/
-                    responses: [
-                        {
-                            code: 500,
-                            msg: 'Something get wrong :(',
-                            note: "Внутренняя ошибка"
-                        },
-                    ]
-                }
-            ]
-        }
+    let navConfig : TMethodGroup[] = [
+        postGroup,
+        sourceGroup,
     ]
 
     return (
@@ -71,7 +24,7 @@ export default function App() {
                     <div style={{backgroundColor: "#eee"}}>
                         <Routes>
 
-                            <Route path="*" element={<Home nav={nav}/>}/>
+                            <Route path="*" element={<Home navConfig={navConfig}/>}/>
 
                         </Routes>
                     </div>

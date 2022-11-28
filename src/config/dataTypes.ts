@@ -1,26 +1,47 @@
-export type TParam = {
+export type TInParam = {
     k: string;
     name: string;
     limitations?: {
-        max: number,
-        min: number,
+        min?: number,
+        max?: number,
     },
     note?: string;
+    defaultValue?: string,
+    isOptional?: boolean // TODO realize
+    isAuthOnly?: boolean,
+    isHUserOnly?: boolean,
+}
+
+export type TOutParamTypes = "string" | "int" | "float" | "bool" | "MongoId" | "array" | "object"// TODO type array or object
+
+export type TOutParam = {
+    k: string,
+    type: TOutParamTypes,
+    inner?: TOutParam[] | TOutParam, // for array and object
+    note?: string,
+    isOptional?: boolean,
+    isAuthOnly?: boolean,
+    isHUserOnly?: boolean,
 }
 
 export type TResponse = {
     code: number;
-    msg: string;
+    msg?: string;
+    params?: TOutParam[];
     note?: string;
 }
 
+export type TMethodTypes = "get" | "post" | "put" | "delete"
+
 export type TMethod = {
     k: string;
-    method: "get" | "post" | "put";
+    method: TMethodTypes;
     name: string;
     shortName: string;
     note?: string;
-    params: TParam[],
+    isAuthOnly?: boolean,
+    isHUserOnly?: boolean,
+    params: TInParam[],
     responses: TResponse[],
 }
 

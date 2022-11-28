@@ -8,10 +8,6 @@ export let create : TMethod = {
     name: "Создание нового поста",
     shortName: "Создание",
     note: "Работает через раз :(",
-    params: [
-        titleParam,
-        textParam,
-        imgsParam
-    ],
+    params: [titleParam, textParam, imgsParam],
     responses: [response_500]
 }
