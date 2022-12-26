@@ -1,14 +1,14 @@
 import {TMethod, TInParam, TResponse} from "../../dataTypes";
 import {response_401, response_500} from "../../responses";
 
-export let isAll : TInParam = {
+export let inParam1 : TInParam = {
     k: "isAll",
     name: "Все",
     note: "Массив картинок. Приходят как formData.",
     defaultValue: "false",
     isHUserOnly: true,
 }
-export let isAll2 : TInParam = {
+export let inParam2 : TInParam = {
     k: "isAll2",
     name: "Все",
     note: "Массив картинок. Приходят как formData.",
@@ -18,7 +18,7 @@ export let isAll2 : TInParam = {
 
 export let sourceResponse : TResponse = {
     code: 200,
-    params: [ // TODO realize in render methods
+    params: [
         {k: "id", type: "MongoId"},
         {k: "label", type: "string"},
         {k: "logo", type: "MongoId"},
@@ -52,6 +52,6 @@ export let all : TMethod = {
     method: "get",
     name: "Получение всех источников",
     shortName: "Все",
-    params: [isAll, isAll2],
+    params: [inParam1, inParam2],
     responses: [response_401, response_500, sourceResponse]
 }

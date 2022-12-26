@@ -22,7 +22,7 @@ export let InParam = (
                 <div className="pe-2">{makeAuthOnlyIcon(isAuthOnly)}</div>
                 <div className="pe-2">{makeHUserOnlyIcon(isHUserOnly)}</div>
                 <div className="pe-3 fw-bold">{name}</div>
-                {k + (defaultValue && " = " + defaultValue)}
+                {k + ((defaultValue && " = " + defaultValue) || "")}
             </div>
             {note && <div className="text-grey" style={{fontSize: "0.8rem"}}>{note}</div>}
             {

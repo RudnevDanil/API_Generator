@@ -7,12 +7,12 @@ export type TInParam = {
     },
     note?: string;
     defaultValue?: string,
-    isOptional?: boolean // TODO realize
+    isOptional?: boolean
     isAuthOnly?: boolean,
     isHUserOnly?: boolean,
 }
 
-export type TOutParamTypes = "string" | "int" | "float" | "bool" | "MongoId" | "array" | "object"// TODO type array or object
+export type TOutParamTypes = "string" | "int" | "float" | "bool" | "MongoId" | "array" | "object"
 
 export type TOutParam = {
     k: string,

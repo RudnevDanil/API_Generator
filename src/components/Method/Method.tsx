@@ -51,7 +51,6 @@ export let Method = (
                 params && params.length &&
                 <div className={"py-2" + center('start', 'top')}>
                     <div className="fw-bold pe-2">{"Параметры:"}</div>
-                    {(() => {console.log("gp: ", params); return null})()}
                     <div className="ps-3 w-100">
                         {params.map(param => (<InParam {...param} key={param.k}/>))}
                     </div>
