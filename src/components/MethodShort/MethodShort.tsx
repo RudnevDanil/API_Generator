@@ -3,6 +3,7 @@ import React from "react";
 import {TMethod} from "../../config/dataTypes";
 import {center} from "../../functions";
 import {makeAuthOnlyIcon, makeHUserOnlyIcon, renderMethodType} from "../../pages/Home/Home";
+import {baseRoute} from "../../constants";
 
 export let MethodShort = (
     {
@@ -24,7 +25,7 @@ export let MethodShort = (
     return (
         <NavLink
             className={"text-decoration-none text-white"}
-            to={parentKey + '/' + k}
+            to={baseRoute + '/' + parentKey + '/' + k}
         >
             <div
                 className="my-2 ps-3 rounded-3"

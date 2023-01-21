@@ -1,8 +1,8 @@
 import React, {ReactElement, useEffect, useState} from "react";
-import {NavLink, useLocation} from 'react-router-dom';
+import {NavLink, Navigate, useLocation} from 'react-router-dom';
 import {center} from "../../functions";
 //import { ReactComponent as Logo } from "../../imgs/swords.svg"
-import {colors} from "../../constants";
+import {baseRoute, colors} from "../../constants";
 import {Tooltip} from "@mui/material";
 import {TMethodGroup} from "../../config/dataTypes";
 import {Path} from "../../components/Path/Path";
@@ -88,6 +88,7 @@ export default function Home({navConfig}: {navConfig: TMethodGroup[]}){
     ))
 
     let {pathname: pathNow} = useLocation();
+    pathNow = pathNow.replace(baseRoute, '')
     let paths = pathNow.split('/').filter(el => el.length)
 
     useEffect(() => {
@@ -106,7 +107,7 @@ export default function Home({navConfig}: {navConfig: TMethodGroup[]}){
                     overflowY: "auto",
                 }}
             >
-                <NavLink to={"/"} className={"text-decoration-none text-white"}>
+                <NavLink to={baseRoute} className={"text-decoration-none text-white"}>
                     <div
                         className={"row m-0 mw-100 py-2 fw-bold" + center()}
                         style={{

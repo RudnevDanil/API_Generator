@@ -34,7 +34,6 @@ export let Response = (
             </div>
 
             { note && <div className="text-grey" style={{fontSize: "0.8rem"}}>{note}</div>}
-            {(() => {console.log("rp: ", params); return null})()}
             {params && (
                 isOpened ?
                     params.map(param => <OutParam {...param} key={param.k}/>)

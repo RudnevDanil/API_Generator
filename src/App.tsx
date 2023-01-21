@@ -8,13 +8,20 @@ import Home from "./pages/Home/Home";
 import {TMethodGroup} from "./config/dataTypes";
 import {postGroup} from "./config/post/postGroup";
 import {sourceGroup} from "./config/source/sourceGroup";
+import {baseRoute} from "./constants";
 
 export default function App() {
+
+    //let {pathname: pathNow} = useLocation();
 
     let navConfig : TMethodGroup[] = [
         postGroup,
         sourceGroup,
     ]
+
+    // do we need this ?
+    //if(pathNow.includes(baseRoute))
+    //    return <Navigate to={pathNow.replace(baseRoute, "")}/>
 
     return (
         <BrowserRouter>

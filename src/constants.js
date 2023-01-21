@@ -9,3 +9,5 @@ export let colors = {
     blue:       {color: "#576c83", backgroundColor: "#dbefff", average: "#a6d0ffbb"},
     transparent:{color: "#212529", backgroundColor: "#ffffff00", average: "#21252999"},
 }
+
+export const baseRoute = "/vanspot/api/docs"
