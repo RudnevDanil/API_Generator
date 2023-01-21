@@ -48,7 +48,7 @@ export let Method = (
             }
 
             {
-                params && params.length &&
+                params && Boolean(params.length) &&
                 <div className={"py-2" + center('start', 'top')}>
                     <div className="fw-bold pe-2">{"Параметры:"}</div>
                     <div className="ps-3 w-100">
@@ -58,7 +58,7 @@ export let Method = (
             }
 
             {
-                responses && responses.length &&
+                responses && Boolean(responses.length) &&
                 <div className={"py-2" + center('start', 'top')}>
                     <div className="fw-bold pe-2">{"Ответы:"}</div>
                     <div className="ps-3 w-100">
