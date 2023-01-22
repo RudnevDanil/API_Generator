@@ -21,7 +21,7 @@
   },
   "homepage": "./",
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=3010 react-scripts start",
     "build": "react-scripts build && sudo rm /usr/share/nginx/html/vanspot/api/docs/* -rf && sudo cp ./build/* /usr/share/nginx/html/vanspot/api/docs/ -r",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
