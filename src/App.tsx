@@ -9,6 +9,7 @@ import {TMethodGroup} from "./config/dataTypes";
 import {postGroup} from "./config/post/postGroup";
 import {sourceGroup} from "./config/source/sourceGroup";
 import {baseRoute} from "./constants";
+import {userGroup} from "./config/user/userGroup";
 
 export default function App() {
 
@@ -17,6 +18,7 @@ export default function App() {
     let navConfig : TMethodGroup[] = [
         postGroup,
         sourceGroup,
+        userGroup,
     ]
 
     // do we need this ?

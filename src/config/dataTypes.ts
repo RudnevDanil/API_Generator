@@ -1,4 +1,4 @@
-export type TInParam = {
+export type TInParam = { // todo тут почему-то нет типа входного параметра втф ???
     k: string;
     name: string;
     limitations?: {
@@ -12,7 +12,7 @@ export type TInParam = {
     isHUserOnly?: boolean,
 }
 
-export type TOutParamTypes = "string" | "int" | "float" | "bool" | "MongoId" | "array" | "object"
+export type TOutParamTypes = "string" | "int" | "float" | "bool" | "date" | "token" | "MongoId" | "array" | "object"
 
 export type TOutParam = {
     k: string,
@@ -41,8 +41,8 @@ export type TMethod = {
     note?: string;
     isAuthOnly?: boolean,
     isHUserOnly?: boolean,
-    params: TInParam[],
-    responses: TResponse[],
+    params?: TInParam[],
+    responses?: TResponse[],
 }
 
 export type TMethodGroup = {
@@ -50,3 +50,5 @@ export type TMethodGroup = {
     name: string;
     items: TMethod[]
 }
+
+export type TFlagsInp = {[k: string]: boolean}
