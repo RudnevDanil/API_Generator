@@ -1,7 +1,7 @@
 import {TMethod} from "../../config/dataTypes";
 import {center} from "../../functions";
 import React from "react";
-import {makeAuthOnlyIcon, renderMethodType} from "../../pages/Home/Home";
+import {makeAuthOnlyIcon, makeHUserOnlyIcon, renderMethodType} from "../../pages/Home/Home";
 import {InParam} from "../InParam/InParam";
 import {Response} from "../Response/Response";
 
@@ -18,7 +18,7 @@ export let Method = (
             isHUserOnly
         },
         pathNow
-    } : {
+    }: {
         methodObj: TMethod,
         pathNow: string
     }) => {
@@ -30,7 +30,7 @@ export let Method = (
                 {"Метод " + pathNow}
                 <div className={"ps-2" + center('end')}>
                     {isAuthOnly && <div className="pe-2">{makeAuthOnlyIcon(isAuthOnly)}</div>}
-                    {isHUserOnly && <div className="pe-2">{makeAuthOnlyIcon(isHUserOnly)}</div>}
+                    {isHUserOnly && <div className="pe-2">{makeHUserOnlyIcon(isHUserOnly)}</div>}
                 </div>
             </div>
 
@@ -47,15 +47,17 @@ export let Method = (
                 </div>
             }
 
-            {
-                params && Boolean(params.length) &&
-                <div className={"py-2" + center('start', 'top')}>
-                    <div className="fw-bold pe-2">{"Параметры:"}</div>
-                    <div className="ps-3 w-100">
-                        {params.map(param => (<InParam {...param} key={param.k}/>))}
-                    </div>
-                </div>
-            }
+            <div className={"py-2" + center('start', 'top')}>
+                <div className="fw-bold pe-2">{"Параметры:"}</div>
+                {
+                    params && Boolean(params.length) ?
+                        <div className="ps-3 w-100">
+                            {params.map(param => (<InParam {...param} key={param.k}/>))}
+                        </div>
+                        :
+                        "Отсутствуют"
+                }
+            </div>
 
             {
                 responses && Boolean(responses.length) &&
