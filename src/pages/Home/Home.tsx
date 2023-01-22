@@ -39,6 +39,13 @@ export let makeMarkerIcon = (
     </div>
 )
 
+export let makeBracketIconIcon = ({tooltip, brackets}: { tooltip: string, brackets: string }) => (
+    <Tooltip title={tooltip}>
+        <div className="fs-5 fw-bold" style={{color: colors.blue.color}}>
+            {brackets}
+        </div>
+    </Tooltip>
+)
 export let makeOptionalIcon = (isOptional: boolean = false) => makeMarkerIcon({
     icon: `fas fa-${isOptional ? 'asterisk' : 'exclamation'}`,
     condition: true,

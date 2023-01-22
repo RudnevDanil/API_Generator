@@ -1,7 +1,20 @@
 import React from "react";
-import {TOutParam} from "../../config/dataTypes";
+import {TOutParam, TOutParamTypes} from "../../config/dataTypes";
 import {center} from "../../functions";
-import {makeAuthOnlyIcon, makeHUserOnlyIcon, makeOptionalIcon} from "../../pages/Home/Home";
+import {makeAuthOnlyIcon, makeBracketIconIcon, makeHUserOnlyIcon, makeOptionalIcon} from "../../pages/Home/Home";
+import {colors} from "../../constants";
+
+
+const OutTypeLabel = ({type}: {type: TOutParamTypes}) => {
+    if(type === "object" || type === "array"){
+        const brackets = {
+            object: {tooltip: "Объект", brackets: "{ }"},
+            array: {tooltip: "Массив", brackets: "[ ]"},
+        }
+        return makeBracketIconIcon(brackets[type])
+    }
+    return <>{type}</>
+}
 
 export let OutParam = (
     {
@@ -21,7 +34,7 @@ export let OutParam = (
                 <div className="pe-2">{makeAuthOnlyIcon(isAuthOnly)}</div>
                 <div className="pe-4">{makeHUserOnlyIcon(isHUserOnly)}</div>
                 <div className="pe-3 fw-bold">{k}</div>
-                {type}
+                <OutTypeLabel type={type}/>
             </div>
             {note && <div className="text-grey" style={{fontSize: "0.8rem"}}>{note}</div>}
             {["array", "object"].includes(type) && inner &&
