@@ -1,7 +1,7 @@
 import {TInParam} from "../dataTypes";
 
 // todo нужны типа параметров
-export const userIn : {[k: string]: TInParam} = {
+export const pIn : {[k: string]: TInParam} = {
     userName: {k: "userName", name: "Имя"},
     login: {k: "login", name: "Логин"},
     pass: {k: "pass", name: "Пароль"},

@@ -1,11 +1,11 @@
 import {TMethod, TResponse} from "../../dataTypes";
 import {response_401, response_401_notHUser, response_500} from "../../responses";
-import {getUserOut} from "../userOut";
+import {getOut} from "../pOut";
 
-export const usersResponse : TResponse = {
+export const successResponse : TResponse = {
     code: 200,
     params: [
-        {k: "users", type: "array", note: "массив пользователей", inner: getUserOut({})},
+        {k: "users", type: "array", note: "массив пользователей", inner: getOut({})},
     ],
     note: "Успешный ответ"
 }
@@ -17,5 +17,5 @@ export const all : TMethod = {
     shortName: "Все",
     isAuthOnly: true,
     isHUserOnly: true,
-    responses: [usersResponse, response_401, response_401_notHUser, response_500]
+    responses: [successResponse, response_401, response_401_notHUser, response_500]
 }

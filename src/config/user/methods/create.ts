@@ -1,16 +1,16 @@
 import {TMethod, TInParam, TResponse} from "../../dataTypes";
 import {response_400, response_401, response_500} from "../../responses";
-import {getUserOut} from "../userOut";
-import {userIn} from "../userIn";
+import {getOut} from "../pOut";
+import {pIn} from "../pIn";
 
 export let successResponse : TResponse = {
-    code: 200,
+    code: 201,
     params: [
         {
             k: "",
             type: "object",
             note: "пользователь с токеном и маркнутыми постами",
-            inner: getUserOut({token: true, marked: true})
+            inner: getOut({token: true, marked: true})
         },
     ],
     note: "Успешный ответ"
@@ -29,11 +29,11 @@ export let create : TMethod = {
     shortName: "Создание",
     isAuthOnly: true,
     params: [
-        userIn.userName,
-        userIn.login,
-        userIn.pass,
-        userIn.deviceUid,
-        {...userIn.avatar, isOptional: true},
+        pIn.userName,
+        pIn.login,
+        pIn.pass,
+        pIn.deviceUid,
+        {...pIn.avatar, isOptional: true},
     ],
     responses: [successResponse, response_400, response_400_userExist, response_401, response_500]
 }

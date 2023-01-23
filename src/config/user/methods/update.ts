@@ -1,6 +1,6 @@
 import {TMethod, TResponse} from "../../dataTypes";
 import {response_400, response_401, response_401_notHUser, response_500} from "../../responses";
-import {userIn} from "../userIn";
+import {pIn} from "../pIn";
 import {allOptional} from "../../functions";
 
 export let successResponse : TResponse = {
@@ -10,7 +10,7 @@ export let successResponse : TResponse = {
             k: "",
             type: "object",
             inner: [
-                {k: "avatarId", type: "MongoId", isOptional: true}
+                {k: "avatarId", type: "MongoId", note: "в случае создания нового", isOptional: true}
             ]
         },
     ],
@@ -24,10 +24,10 @@ export let update : TMethod = {
     shortName: "Обновление",
     isAuthOnly: true,
     params: allOptional([
-        userIn.pass,
-        {...userIn.avatar},
-        {...userIn.userName, isHUserOnly: true},
-        {...userIn.login, isHUserOnly: true},
+        pIn.pass,
+        {...pIn.avatar},
+        {...pIn.userName, isHUserOnly: true},
+        {...pIn.login, isHUserOnly: true},
         {k: "removeAvatar", name: "Флаг удаления аватара", isHUserOnly: true},
         {k: "currentUser", name: "Эмуляция действий пользователя", isHUserOnly: true},
     ]),

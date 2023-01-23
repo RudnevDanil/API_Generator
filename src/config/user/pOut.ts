@@ -1,6 +1,6 @@
 import {TFlagsInp, TOutParam} from "../dataTypes";
 
-const userOut : TOutParam[] = [
+const pOut : TOutParam[] = [
     {k: "userId", type: "MongoId"},
     {k: "name", type: "string"},
     {k: "login", type: "string"},
@@ -12,7 +12,7 @@ const userOut : TOutParam[] = [
     {k: "avatarId", type: "MongoId"},
 ]
 
-export const getUserOut : (flags: TFlagsInp) => TOutParam[]= (
+export const getOut : (flags: TFlagsInp) => TOutParam[]= (
     {
         token ,
         marked ,
@@ -26,7 +26,7 @@ export const getUserOut : (flags: TFlagsInp) => TOutParam[]= (
     if(marked) byf.push({k: "markedPostsAmount", type: "int"})
 
     return [
-        ...userOut,
+        ...pOut,
         ...byf,
     ]
 }

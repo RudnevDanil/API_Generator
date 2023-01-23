@@ -6,7 +6,7 @@ export type TInParam = { // todo тут почему-то нет типа вхо
         max?: number,
     },
     note?: string;
-    defaultValue?: string,
+    defaultValue?: string | boolean, // todo неправильно обрабатывается дефолтное значение false
     isOptional?: boolean
     isAuthOnly?: boolean,
     isHUserOnly?: boolean,

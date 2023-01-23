@@ -6,24 +6,22 @@ import "moment/locale/en-gb";
 
 import Home from "./pages/Home/Home";
 import {TMethodGroup} from "./config/dataTypes";
-import {postGroup} from "./config/post/postGroup";
-import {sourceGroup} from "./config/source/sourceGroup";
+import {postGroup} from "./config/post_debug/postGroup";
+import {sourceGroup} from "./config/source_debug/sourceGroup";
 import {baseRoute} from "./constants";
-import {userGroup} from "./config/user/userGroup";
+import {group} from "./config/user/group";
+import {source} from "./config/source/group";
 
 export default function App() {
 
     //let {pathname: pathNow} = useLocation();
 
     let navConfig : TMethodGroup[] = [
-        postGroup,
-        sourceGroup,
-        userGroup,
+        //postGroup,
+        //sourceGroup,
+        group,
+        source,
     ]
-
-    // do we need this ?
-    //if(pathNow.includes(baseRoute))
-    //    return <Navigate to={pathNow.replace(baseRoute, "")}/>
 
     return (
         <BrowserRouter>
