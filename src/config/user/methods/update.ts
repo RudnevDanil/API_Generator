@@ -7,7 +7,7 @@ export let successResponse : TResponse = {
     code: 200,
     params: [
         {
-            k: "",
+            k: "smth",
             type: "object",
             inner: [
                 {k: "avatarId", type: "MongoId", note: "в случае создания нового", isOptional: true}

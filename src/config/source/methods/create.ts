@@ -7,7 +7,7 @@ export let successResponse : TResponse = {
     code: 201,
     params: [
         {
-            k: "",
+            k: "smth",
             type: "object",
             inner: getOut({})
         },

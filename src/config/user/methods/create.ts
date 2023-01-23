@@ -7,7 +7,7 @@ export let successResponse : TResponse = {
     code: 201,
     params: [
         {
-            k: "",
+            k: "smth",
             type: "object",
             note: "пользователь с токеном и маркнутыми постами",
             inner: getOut({token: true, marked: true})

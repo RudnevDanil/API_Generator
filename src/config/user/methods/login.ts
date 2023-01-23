@@ -6,7 +6,7 @@ import {pIn} from "../pIn";
 export let successResponse : TResponse = {
     code: 200,
     params: [
-        {k: "", type: "object", note: "пользователь с токеном", inner: getOut({token: true})},
+        {k: "smth", type: "object", note: "пользователь с токеном", inner: getOut({token: true})},
     ],
     note: "Успешный ответ"
 }

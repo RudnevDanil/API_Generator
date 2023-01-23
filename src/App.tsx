@@ -11,6 +11,9 @@ import {sourceGroup} from "./config/source_debug/sourceGroup";
 import {baseRoute} from "./constants";
 import {group} from "./config/user/group";
 import {source} from "./config/source/group";
+import {postType} from "./config/postType/group";
+import {comment} from "./config/comment/group";
+import {mark} from "./config/mark/group";
 
 export default function App() {
 
@@ -21,6 +24,9 @@ export default function App() {
         //sourceGroup,
         group,
         source,
+        postType,
+        comment,
+        mark,
     ]
 
     return (

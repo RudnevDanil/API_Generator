@@ -15,7 +15,8 @@ export const successResponse : TResponse = {
     note: "Успешный ответ"
 }
 
-export const userName : TInParam = {k: "isAll", name: "Все", note: "По умолчанию только активные", defaultValue: false, isOptional: true}
+// todo naming
+export const isAll : TInParam = {k: "isAll", name: "Все", note: "По умолчанию только активные", defaultValue: false, isOptional: true}
 
 export const all : TMethod = {
     k: "all",
@@ -24,6 +25,6 @@ export const all : TMethod = {
     shortName: "Все",
     isAuthOnly: true,
     isHUserOnly: true,
-    params: [userName],
+    params: [isAll],
     responses: [successResponse, response_401, response_401_notHUser, response_500]
 }
