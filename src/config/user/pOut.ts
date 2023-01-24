@@ -1,32 +1,47 @@
-import {TFlagsInp, TOutParam} from "../dataTypes";
+import {TParam} from "../dataTypes";
+import {User} from "./model";
 
-const pOut : TOutParam[] = [
-    {k: "userId", type: "MongoId"},
-    {k: "name", type: "string"},
-    {k: "login", type: "string"},
-    {k: "creationDate", type: "date"},
-    {k: "pointsCreated", type: "int"},
-    {k: "commentsCreated", type: "int"},
-    {k: "hUser", type: "bool"},
-    {k: "active", type: "bool"},
-    {k: "avatarId", type: "MongoId"},
-]
-
-export const getOut : (flags: TFlagsInp) => TOutParam[]= (
-    {
-        token ,
-        marked ,
-    }
-) => {
-    const byf :TOutParam[] = []
-
-    if(token) byf.push({k: "token", type: "token"})
-
-    if(marked) byf.push({k: "markedPosts", type: "array", note: "тут нужно уточнить, пока что []"})
-    if(marked) byf.push({k: "markedPostsAmount", type: "int"})
-
-    return [
-        ...pOut,
-        ...byf,
-    ]
+export type TPOutKeys = "auth" | "markList" | "user" | "dates" | "flags"
+export const pOut : {[k in TPOutKeys] : TParam} =  {
+    auth: {
+        k: "auth",
+        name: "авторизация",
+        type: "object",
+        inner: [
+            User.login,
+            User.token,
+        ]
+    },
+    markList: User.markList,
+    user: {
+        k: "user",
+        name: "пользователь",
+        type: "object",
+        inner: [
+            User.id,
+            User.userName,
+            User.commentsCreated,
+            User.pointsCreated,
+            User.markedAmount,
+            User.avatarId,
+        ]
+    },
+    dates: {
+        k: "dates",
+        name: "даты",
+        type: "object",
+        inner: [
+            User.created,
+            User.updated,
+        ]
+    },
+    flags: {
+        k: "flags",
+        name: "флаги",
+        type: "object",
+        inner: [
+            User.hUser,
+            User.active,
+        ]
+    },
 }

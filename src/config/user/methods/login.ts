@@ -1,12 +1,14 @@
 import {TMethod, TResponse} from "../../dataTypes";
 import {response_400, response_401, response_500} from "../../responses";
-import {getOut} from "../pOut";
+import {pOut} from "../pOut";
 import {pIn} from "../pIn";
 
 export let successResponse : TResponse = {
     code: 200,
     params: [
-        {k: "smth", type: "object", note: "пользователь с токеном", inner: getOut({token: true})},
+        pOut.user,
+        pOut.auth,
+        pOut.markList,
     ],
     note: "Успешный ответ"
 }

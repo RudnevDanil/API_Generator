@@ -1,4 +1,33 @@
-export type TInParam = { // todo тут почему-то нет типа входного параметра втф ???
+
+export type TParamTypes = "string" | "int" | "float" | "bool" | "date" | "token" | "MongoId" | "jwt" | "bcryptHash" | "array" | "object"
+export type TOutParamTypes = TParamTypes // todo we dont need it
+
+export type TParam = {
+    k: string;
+    name: string;
+    // todo realize in inRender
+    type: TParamTypes,
+    inner?: TParam[] | TParam, // for array and object
+
+    // todo realize in outRender
+    limitations?: {
+        min?: number,
+        max?: number,
+    },
+    note?: string;
+
+    // todo number could be also
+    // todo realize in outRender
+    // todo неправильно обрабатывается дефолтное значение false
+    defaultValue?: string | boolean,
+    isOptional?: boolean
+    isAuthOnly?: boolean,
+    isHUserOnly?: boolean,
+}
+
+export type TInParam = TParam
+export type TOutParam = TParam
+/*export type TInParam = { // todo тут почему-то нет типа входного параметра втф ???
     k: string;
     name: string;
     limitations?: {
@@ -12,8 +41,6 @@ export type TInParam = { // todo тут почему-то нет типа вхо
     isHUserOnly?: boolean,
 }
 
-export type TOutParamTypes = "string" | "int" | "float" | "bool" | "date" | "token" | "MongoId" | "array" | "object"
-
 export type TOutParam = {
     k: string,
     type: TOutParamTypes,
@@ -22,7 +49,7 @@ export type TOutParam = {
     isOptional?: boolean,
     isAuthOnly?: boolean,
     isHUserOnly?: boolean,
-}
+}*/
 
 export type TResponse = {
     code: number;
@@ -41,7 +68,7 @@ export type TMethod = {
     note?: string;
     isAuthOnly?: boolean,
     isHUserOnly?: boolean,
-    params?: TInParam[],
+    params?: (TInParam | undefined)[], // todo need to check it in front
     responses?: TResponse[],
 }
 

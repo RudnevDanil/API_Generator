@@ -1,10 +1,14 @@
-import {TInParam} from "../dataTypes";
+import {TParam} from "../dataTypes";
+import {User, UserFields} from "./model";
+import {activeOnly} from "../pIn";
 
-// todo нужны типа параметров
-export const pIn : {[k: string]: TInParam} = {
-    userName: {k: "userName", name: "Имя"},
-    login: {k: "login", name: "Логин"},
-    pass: {k: "pass", name: "Пароль"},
-    deviceUid: {k: "deviceUid", name: "Идентификатор устройства"},
-    avatar: {k: "avatar", name: "Аватар"},
+export type TIn = UserFields | 'activeOnly'
+export const pIn : {[k in TIn]?: TParam} = {
+    userName: User.userName,
+    login: User.login,
+    pass: User.pass,
+    deviceUid: User.deviceUid, // is it in User or at all requests???
+    avatarId: User.avatarId,
+
+    activeOnly,
 }

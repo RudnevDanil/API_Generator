@@ -1,35 +1,53 @@
-import {TMethod, TResponse} from "../../dataTypes";
+import {TMethod, TParam, TResponse} from "../../dataTypes";
 import {response_400, response_401, response_401_notHUser, response_500} from "../../responses";
 import {pIn} from "../pIn";
-import {allOptional} from "../../functions";
+import {allHUserOnly, allOptional} from "../../functions";
+import {pOut} from "../pOut";
 
 export let successResponse : TResponse = {
     code: 200,
     params: [
-        {
-            k: "smth",
-            type: "object",
-            inner: [
-                {k: "avatarId", type: "MongoId", note: "в случае создания нового", isOptional: true}
-            ]
-        },
+        pOut.user,
+        pOut.auth,
+        pOut.markList,
     ],
     note: "Успешный ответ"
 }
 
-export let update : TMethod = {
+let removeAvatar: TParam = {
+    k: "removeAvatar",
+    type: "bool",
+    name: "Флаг удаления аватара",
+    note: "удалить может только супер. обычный смертный пусть заменяет"
+}
+
+let currentUser: TParam = {
+    k: "currentUser",
+    type: "bool",
+    name: "Эмуляция действий пользователя"
+}
+
+export let update: TMethod = {
     k: "update",
     method: "put",
     name: "Обновление пользователя",
     shortName: "Обновление",
     isAuthOnly: true,
     params: allOptional([
-        pIn.pass,
-        {...pIn.avatar},
-        {...pIn.userName, isHUserOnly: true},
-        {...pIn.login, isHUserOnly: true},
-        {k: "removeAvatar", name: "Флаг удаления аватара", isHUserOnly: true},
-        {k: "currentUser", name: "Эмуляция действий пользователя", isHUserOnly: true},
+        {...pIn.pass as TParam, note: "new pass"},
+        pIn.avatarId,
+        ...allHUserOnly([
+            pIn.userName,
+            pIn.login,
+            removeAvatar,
+            currentUser,
+        ]) as []
     ]),
-    responses: [successResponse, response_400, response_401, response_401_notHUser, response_500]
+    responses: [
+        successResponse,
+        response_400,
+        response_401,
+        response_401_notHUser,
+        response_500
+    ]
 }
