@@ -6,8 +6,18 @@ import {delete_} from "./methods/delete";
 import {create} from "./methods/create";
 import {update} from "./methods/update";
 
-export let group: TMethodGroup = {
+export let user: TMethodGroup = {
     k: "user",
     name: "Пользователь",
-    items: [all, login, logout, create, update, delete_]
+    items: [
+        all,
+        login,
+        logout,
+        create,
+        update,
+        delete_,
+
+        // todo было бы круто объединить mark. нужно вложенность любого уровня обработать на рендере
+
+    ]
 }
