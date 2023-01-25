@@ -1,4 +1,4 @@
-import {TMethodGroup} from "../dataTypes";
+import {TMethodGroup} from "../../../dataTypes";
 import {list} from "./methods/list";
 import {doMark} from "./methods/doMark";
 

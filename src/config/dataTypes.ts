@@ -75,7 +75,7 @@ export type TMethod = {
 export type TMethodGroup = {
     k: string;
     name: string;
-    items: TMethod[]
+    items: TMethod[] // todo TMethod[] | TMethodGroup
 }
 
 export type TFlagsInp = {[k: string]: boolean}

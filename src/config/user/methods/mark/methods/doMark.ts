@@ -1,22 +1,17 @@
-import {TMethod, TResponse} from "../../dataTypes";
+import {TMethod, TParam, TResponse} from "../../../../dataTypes";
 import {
     response_400,
     response_400_post_not_found,
     response_401,
     response_500
-} from "../../responses";
+} from "../../../../responses";
 
 export let successResponse : TResponse = {
     code: 200,
-    params: [
-        {
-            k: "smth",
-            type: "object",
-            inner: []
-        },
-    ],
     note: "Успешный ответ"
 }
+
+let markState: TParam = {k: "markState", name: "новое состояние", type: "bool", isOptional: true, defaultValue: true}
 
 export let doMark : TMethod = {
     k: "domark",
@@ -25,8 +20,9 @@ export let doMark : TMethod = {
     shortName: "Марк",
     isAuthOnly: true,
     params: [
-        {k: "postId", name: "пост"},
-        {k: "markState", name: "новое состояние"},
+        // todo брать postId из поста
+        // old code -> {k: "postId", name: "пост"},
+        markState
     ],
     responses: [
         successResponse,

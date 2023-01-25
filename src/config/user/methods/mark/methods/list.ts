@@ -1,5 +1,5 @@
-import {TMethod, TResponse} from "../../dataTypes";
-import {response_401, response_500} from "../../responses";
+import {TMethod, TResponse} from "../../../../dataTypes";
+import {response_401, response_500} from "../../../../responses";
 
 export const successResponse : TResponse = {
     code: 200,
@@ -7,9 +7,11 @@ export const successResponse : TResponse = {
         {
             k: "markList",
             type: "array",
-            note: "массив маркнутых постов",
+            name: "массив маркнутых постов",
             inner: [
-                {k: "postId", type: "MongoId"} // TODO отрисовка / нужна возможность создавать массив не только json но и просто значений, т е без ключа
+                // TODO отрисовка / нужна возможность создавать массив не только json но и просто значений, т е без ключа
+                // todo брать postId из поста
+                // old code -> {k: "postId", type: "MongoId"}
             ]
         },
     ],
