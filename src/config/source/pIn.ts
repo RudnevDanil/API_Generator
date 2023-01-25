@@ -1,8 +1,12 @@
-import {TInParam} from "../dataTypes";
+import {TParam} from "../dataTypes";
+import {Source, SourceFields} from "./model";
+import {activeOnly} from "../pIn";
 
-// todo нужны типа параметров
-export const pIn : {[k: string]: TInParam} = {
-    label: {k: "label", name: "Имя"},
-    active: {k: "active", name: "Активный"},
-    logo: {k: "logo", name: "Иконка"},
+export type TIn = SourceFields | 'activeOnly'
+export const pIn : {[k in TIn]?: TParam} = {
+    label: Source.label,
+    active: Source.active,
+    icon: Source.icon,
+
+    activeOnly,
 }

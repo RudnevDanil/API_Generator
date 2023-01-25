@@ -1,23 +1,24 @@
-import {TFlagsInp, TOutParam} from "../dataTypes";
+import {TParam} from "../dataTypes";
+import {Source} from "./model";
 
-const pOut : TOutParam[] = [
-    {k: "id", type: "MongoId"},
-    {k: "label", type: "string"},
-    {k: "active", type: "bool"},
-    {k: "logo", type: "MongoId"},
-]
-
-export const getOut : (flags: TFlagsInp) => TOutParam[]= (
-    {
-
-    }
-) => {
-    const byf :TOutParam[] = []
-
-    //if(token) byf.push({k: "token", type: "token"})
-
-    return [
-        ...pOut,
-        ...byf,
-    ]
+export type TPOutKeys = "source" | "flags"
+export const pOut : {[k in TPOutKeys] : TParam} =  {
+    source: {
+        k: "source",
+        name: "источник",
+        type: "object",
+        inner: [
+            Source.id,
+            Source.label,
+            Source.icon,
+        ]
+    },
+    flags: {
+        k: "flags",
+        name: "флаги",
+        type: "object",
+        inner: [
+            Source.active,
+        ]
+    },
 }
