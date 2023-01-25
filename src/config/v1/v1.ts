@@ -1,8 +1,8 @@
 import {TMethodGroup} from "../dataTypes";
-import {user} from "./user/group";
-import {source} from "./source/group";
-import {postType} from "./postType/group";
-import {comment} from "./comment/group";
+import {user} from "./entities/user/group";
+import {source} from "./entities/source/group";
+import {postType} from "./entities/postType/group";
+import {comment} from "./entities/comment/group";
 
 export const navConfig : TMethodGroup[] = [
     user,

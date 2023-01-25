@@ -1,5 +1,6 @@
 import {TResponse} from "./dataTypes";
 
+// todo названия всем даже дефолтным
 export const response_400 : TResponse = {
     code: 400,
     msg: 'wrong input params',
