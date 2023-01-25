@@ -5,7 +5,7 @@ export type UserFields =
     "updated" | "created" |
     "pointsCreated" | "commentsCreated" |
     "markList" | "markedAmount" |
-    "avatarId" |
+    "avatar" |
     "deviceUid" | "token" |
     "hUser" | "active"
 export const User : {[k in UserFields]: TParam} = {
@@ -23,7 +23,7 @@ export const User : {[k in UserFields]: TParam} = {
 
     "markList": {k : "markList", type: "array", inner: [{k: "smth", type: "MongoId", name: "id поста"}], name: "список маркнутых постов", defaultValue: "[]"},
 
-    "avatarId": {k : "avatarId", type: "MongoId", name: "аватар", isOptional: true},
+    "avatar": {k : "avatar", type: "MongoId", name: "аватар", isOptional: true},
 
     "deviceUid": {k : "deviceUid", type: "string", name: "идентификатор устройства"},
     "token": {k : "token", type: "jwt", name: "токен доступа"},

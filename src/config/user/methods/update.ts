@@ -35,7 +35,7 @@ export let update: TMethod = {
     isAuthOnly: true,
     params: allOptional([
         {...pIn.pass as TParam, note: "new pass"},
-        pIn.avatarId,
+        pIn.avatar,
         ...allHUserOnly([
             pIn.userName,
             pIn.login,

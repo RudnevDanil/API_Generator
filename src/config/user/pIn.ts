@@ -8,7 +8,7 @@ export const pIn : {[k in TIn]?: TParam} = {
     login: User.login,
     pass: User.pass,
     deviceUid: User.deviceUid, // is it in User or at all requests???
-    avatarId: User.avatarId,
+    avatar: User.avatar,
 
     activeOnly,
 }

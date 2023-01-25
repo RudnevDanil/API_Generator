@@ -28,7 +28,7 @@ export let create : TMethod = {
         pIn.login,
         pIn.pass,
         pIn.deviceUid,
-        pIn.avatarId,
+        pIn.avatar,
     ],
     responses: [
         successResponse,

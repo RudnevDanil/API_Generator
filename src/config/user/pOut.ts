@@ -23,7 +23,7 @@ export const pOut : {[k in TPOutKeys] : TParam} =  {
             User.commentsCreated,
             User.pointsCreated,
             User.markedAmount,
-            User.avatarId,
+            User.avatar,
         ]
     },
     dates: {
