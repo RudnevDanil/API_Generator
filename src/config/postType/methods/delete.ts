@@ -1,4 +1,4 @@
-import {TMethod, TResponse} from "../../dataTypes";
+import {TMethod, TParam, TResponse} from "../../dataTypes";
 import {response_401, response_401_notHUser, response_500} from "../../responses";
 import {pIn} from "../pIn";
 
@@ -15,6 +15,6 @@ export let delete_ : TMethod = {
     shortName: "Удаление",
     isAuthOnly: true,
     isHUserOnly: true,
-    params: [{...pIn.active, isOptional: true, defaultValue: false}],
+    params: [{...pIn.active as TParam, isOptional: true, defaultValue: false}],
     responses: [successResponse, response_401, response_401_notHUser, response_500]
 }

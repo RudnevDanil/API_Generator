@@ -1,6 +1,7 @@
-import {TInParam, TMethod, TResponse} from "../../dataTypes";
+import {TMethod, TResponse} from "../../dataTypes";
 import {response_401, response_401_notHUser, response_500} from "../../responses";
-import {getOut} from "../pOut";
+import {pOut} from "../pOut";
+import {isAll} from "../../pIn";
 
 export const successResponse : TResponse = {
     code: 200,
@@ -8,15 +9,15 @@ export const successResponse : TResponse = {
         {
             k: "postTypes",
             type: "array",
-            note: "массив типов точек",
-            inner: getOut({})
+            name: "массив типов точек",
+            inner: [
+                pOut.postType,
+                pOut.flags,
+            ]
         },
     ],
     note: "Успешный ответ"
 }
-
-// todo naming
-export const isAll : TInParam = {k: "isAll", name: "Все", note: "По умолчанию только активные", defaultValue: false, isOptional: true}
 
 export const all : TMethod = {
     k: "all",
