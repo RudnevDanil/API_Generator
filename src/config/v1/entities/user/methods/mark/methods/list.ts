@@ -10,7 +10,7 @@ export const successResponse : TResponse = {
             name: "массив маркнутых постов",
             inner: [
                 // TODO отрисовка / нужна возможность создавать массив не только json но и просто значений, т е без ключа
-                // todo брать postId из поста
+                // todo брать postId
                 // old code -> {k: "postId", type: "MongoId"}
             ]
         },

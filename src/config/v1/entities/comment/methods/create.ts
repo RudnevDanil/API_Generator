@@ -1,25 +1,18 @@
-import {TMethod, TInParam, TResponse} from "../../../../dataTypes";
+import {TMethod, TResponse} from "../../../../dataTypes";
 import {
     response_400,
     response_400_post_not_found,
     response_401,
-    response_401_notHUser,
     response_500
 } from "../../../../responses";
-import {getOut} from "../pOut";
 import {pIn} from "../pIn";
+import {pOut} from "../pOut";
 
 export let successResponse : TResponse = {
     code: 200,
     params: [
-        {
-            k: "smth",
-            type: "object",
-            inner: [
-                {k: "commentId", type: "MongoId"},
-                {k: "commentsCreated", type: "int"},
-            ]
-        },
+        pOut.comment,
+        pOut.commentsCreated,
     ],
     note: "Успешный ответ"
 }

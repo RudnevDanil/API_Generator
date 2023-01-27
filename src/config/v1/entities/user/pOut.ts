@@ -2,7 +2,7 @@ import {TParam} from "../../../dataTypes";
 import {User} from "./model";
 import {getCommonDatesParam} from "../../common/dates";
 
-export type TPOutKeys = "auth" | "markList" | "user" | "dates" | "flags"
+export type TPOutKeys = "auth" | "markList" | "user" | "userAsCreator" | "dates" | "flags"
 export const pOut : {[k in TPOutKeys] : TParam} =  {
     auth: {
         k: "auth",
@@ -24,6 +24,16 @@ export const pOut : {[k in TPOutKeys] : TParam} =  {
             User.commentsCreated,
             User.pointsCreated,
             User.markedAmount,
+            User.avatar,
+        ]
+    },
+    userAsCreator: {
+        k: "creator",
+        name: "создатель",
+        type: "object",
+        inner: [
+            User.id,
+            User.userName,
             User.avatar,
         ]
     },

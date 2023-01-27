@@ -3,7 +3,6 @@ import {
     response_400, response_400_comment_not_found,
     response_400_post_not_found,
     response_401,
-    response_401_notHUser,
     response_403,
     response_500
 } from "../../../../responses";

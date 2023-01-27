@@ -20,7 +20,7 @@ export let doMark : TMethod = {
     shortName: "Марк",
     isAuthOnly: true,
     params: [
-        // todo брать postId из поста
+        // todo брать postId
         // old code -> {k: "postId", name: "пост"},
         markState
     ],

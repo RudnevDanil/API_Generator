@@ -1,4 +1,4 @@
-import {TMethod} from "../../config/dataTypes";
+import {TInParam, TMethod} from "../../config/dataTypes";
 import {center} from "../../functions";
 import React from "react";
 import {makeAuthOnlyIcon, makeHUserOnlyIcon, renderMethodType} from "../../pages/Home/Home";
@@ -52,7 +52,7 @@ export let Method = (
                 {
                     params && Boolean(params.length) ?
                         <div className="ps-3 w-100">
-                            {params.map(param => (<InParam {...param} key={param.k}/>))}
+                            {params.map(param => (<InParam {...param as TInParam} key={(param as TInParam).k}/>))}
                         </div>
                         :
                         "Отсутствуют"

@@ -1,4 +1,4 @@
-import {TMethod, TInParam, TResponse} from "../../../../dataTypes";
+import {TMethod, TResponse, TParam} from "../../../../dataTypes";
 import {
     response_400,
     response_400_comment_not_found,
@@ -8,15 +8,13 @@ import {
     response_500
 } from "../../../../responses";
 import {pIn} from "../pIn";
+import {pOut} from "../pOut";
+import {allOptional} from "../../../../functions";
 
 export let successResponse : TResponse = {
     code: 201,
     params: [
-        {
-            k: "smth",
-            type: "object",
-            inner: []
-        },
+        pOut.comment,
     ],
     note: "Успешный ответ"
 }
@@ -27,13 +25,13 @@ export let update : TMethod = {
     name: "Обновление комента",
     shortName: "Обновление",
     isAuthOnly: true,
-    isHUserOnly: true,
     params: [
         pIn.postId,
-        pIn.commentId,
-        pIn.rating,
-        pIn.text,
-        pIn.imgs,
+        ...allOptional([
+            pIn.rating,
+            pIn.text,
+            pIn.imgs,
+        ]) as TParam[]
     ],
     responses: [
         successResponse,

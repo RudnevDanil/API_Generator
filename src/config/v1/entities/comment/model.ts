@@ -12,7 +12,7 @@ export type CommentFields =
 export const Comment : {[k in CommentFields]: TParam} = {
     id: commonId,
 
-    postId: {k : "postId", type: "MongoId", name: "пост"}, // todo завести через пост
+    postId: {k : "postId", type: "MongoId", name: "пост"},
     text: {k : "text", type: "string", name: "текст"},
     rating: {k : "rating", type: "float", name: "рэйтинг"},
     imgsAmount: {k : "imgsAmount", type: "int", name: "кол-во изображений"},

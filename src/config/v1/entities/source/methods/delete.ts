@@ -15,6 +15,6 @@ export let delete_ : TMethod = {
     shortName: "Удаление",
     isAuthOnly: true,
     isHUserOnly: true,
-    params: [{...pIn.active as TParam, isOptional: true, defaultValue: false}], // todo завести через общие
+    params: [{...pIn.active as TParam, isOptional: true, defaultValue: false}],
     responses: [successResponse, response_401, response_401_notHUser, response_500]
 }

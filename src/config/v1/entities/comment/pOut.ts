@@ -2,7 +2,9 @@ import {TParam} from "../../../dataTypes";
 import {Comment} from "./model";
 import {getCommonDatesParam} from "../../common/dates";
 import {User} from "../user/model";
+import {pOut as pOutUser} from "../user/pOut";
 import {commonPagesInfo} from "../../common/pagesInfo";
+import {pOut as pOutImg} from "../img/pOut";
 
 export type TPOutKeys = "comment" | 'commentsCreated' | "dates" | "pagesInfo" | "flags"
 export const pOut : {[k in TPOutKeys] : TParam} =  {
@@ -16,17 +18,8 @@ export const pOut : {[k in TPOutKeys] : TParam} =  {
             Comment.text,
             Comment.rating,
             Comment.imgsAmount,
-            // todo creator
-            /*{
-                k: "creator",
-                type: "object",
-                inner: [
-                    {k: "userId", type: "MongoId"},
-                    {k: "name", type: "string"},
-                    {k: "avatar", type: "MongoId"},
-                ]
-            },*/
-            // todo imgs завести через основные или нет?
+            pOutUser.userAsCreator,
+            pOutImg.imgsInfo,
         ]
     },
     commentsCreated: User.commentsCreated,
