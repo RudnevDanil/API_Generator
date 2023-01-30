@@ -18,7 +18,6 @@ let removeAvatar: TParam = {
     k: "removeAvatar",
     type: "bool",
     name: "Флаг удаления аватара",
-    note: "удалить может только супер. обычный смертный пусть заменяет"
 }
 
 let currentUser: TParam = {
@@ -36,10 +35,10 @@ export let update: TMethod = {
     params: allOptional([
         {...pIn.pass as TParam, note: "new pass"},
         pIn.avatar,
+        removeAvatar,
         ...allHUserOnly([
             pIn.userName,
             pIn.login,
-            removeAvatar,
             currentUser,
         ]) as []
     ]),

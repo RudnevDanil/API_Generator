@@ -1,4 +1,4 @@
-import {TMethod, TResponse} from "../../../../dataTypes";
+import {TMethod, TParam, TResponse} from "../../../../dataTypes";
 import {response_400, response_401, response_500} from "../../../../responses";
 import {pOut} from "../pOut";
 import {pIn} from "../pIn";
@@ -19,7 +19,7 @@ export let login : TMethod = {
     name: "Авторизация",
     shortName: "Авторизация",
     params: [
-        pIn.login,
+        {...pIn.login as TParam, note: "либо userName"},
         pIn.pass,
         pIn.deviceUid,
     ],

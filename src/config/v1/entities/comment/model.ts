@@ -13,8 +13,8 @@ export const Comment : {[k in CommentFields]: TParam} = {
     id: commonId,
 
     postId: {k : "postId", type: "MongoId", name: "пост"},
-    text: {k : "text", type: "string", name: "текст"},
-    rating: {k : "rating", type: "float", name: "рэйтинг"},
+    text: {k : "text", type: "string", name: "текст", isOptional: true},
+    rating: {k : "rating", type: "float", name: "рэйтинг", isOptional: true},
     imgsAmount: {k : "imgsAmount", type: "int", name: "кол-во изображений"},
 
     updated: commonDates.updated,
