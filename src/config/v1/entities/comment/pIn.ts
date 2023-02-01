@@ -14,7 +14,7 @@ export const pIn : {[k in TIn]?: TParam} = {
     imgs: {k: 'imgsArray', type: "array", name: "массив изображений", isOptional: true},
     active: Comment.active,
 
-    activeOnly,
+    activeOnly, // todo check usages
 
     limit: commonPagination.limit,
     offset: commonPagination.offset,
