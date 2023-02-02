@@ -5,10 +5,10 @@ import {commonPagination, CommonPaginationFields} from "../../common/pagination"
 import { commonCoordinates, CommonCoordinatesFieldLat, CommonCoordinatesFieldLon } from "../../common/coordinates";
 
 export type TIn = 
-    PostFields | CommonPaginationFields | 'activeOnly' | 'imgs' |
+    PostFields | CommonPaginationFields | 'activeOnly' | 'imgs' | 'remImgs' |
     'ratingMin' | 'ratingMax' | 'transportRatingMax' | 'radius' | 
     CommonCoordinatesFieldLat | CommonCoordinatesFieldLon | 
-    "postTypes" | "paidFactor" | "amountOnly" | "facilities" | "searchLine";
+    "postTypes" | "paidFactor" | "amountOnly" | "facilities" | "searchLine" | "verified";
 
 const regExpCoords = /-?\d{1,3}[.,]\d{2,20}[., ;][ ]?-?\d{1,3}[.,]\d{2,20}/;
 
@@ -40,8 +40,15 @@ export const pIn : {[k in TIn]?: TParam} = {
         k: "searchLine", 
         name: "строка запроса", 
         type: "string", 
-        note: "по заголовку или адресу \n либо координаты формата " + regExpCoords,
+        note: "по заголовку или адресу либо координаты формата " + regExpCoords,
     },
+
+    verified: {k: "verified", type: "bool", name: "флаг верификации", isAuthOnly: true, isHUserOnly: true},
+
+    sources: Post.sources,
+
+    imgs: {k: 'imgsArray', type: "array", name: "массив изображений", isOptional: true},
+    remImgs: {k: "remImgs", type: "array", name: "изображения к удалению" , inner: [{k: "smth", type: "MongoId", name: "id изображения"}]},
 
     limit: commonPagination.limit,
     offset: commonPagination.offset,

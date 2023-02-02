@@ -11,28 +11,35 @@ import {pOut} from "../pOut";
 export let successResponse : TResponse = {
     code: 201,
     params: [
-        pOut.comment,
-        pOut.commentsCreated,
+        pOut.fullInfo,
+        pOut.pointsCreated,
     ],
     note: "Успешный ответ"
 }
 
-const response_409_comment_already_exist : TResponse = {
+const response_409_post_already_exist : TResponse = {
     code: 409,
-    msg: 'user already have comment at that post',
-    note: "У этого пользователя уже есть комент под этим постом"
+    msg: 'there are some posts near',
+    note: "Возле этой точки уже есть посты"
 }
 
 export let create : TMethod = {
     k: "create",
     method: "post",
-    name: "Создание комента",
+    name: "Создание поста",
     shortName: "Создание",
     isAuthOnly: true,
     params: [
-        pIn.postId,
-        pIn.rating,
+        pIn.title,
+        pIn.address,
         pIn.text,
+        pIn.rating,
+        pIn.transportRating,
+        pIn.facilities,
+        pIn.lat,
+        pIn.lon,
+        pIn.payments,
+        pIn.postType,
         pIn.imgs,
     ],
     responses: [
@@ -40,7 +47,7 @@ export let create : TMethod = {
         response_400,
         response_400_post_not_found,
         response_401,
-        response_409_comment_already_exist,
+        response_409_post_already_exist,
         response_500,
     ]
 }

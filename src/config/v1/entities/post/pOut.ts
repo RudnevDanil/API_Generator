@@ -6,6 +6,8 @@ import {allHUserOnly} from "../../../functions";
 
 import {pOut as pOutImg} from "../img/pOut";
 import {pOut as pOutUser} from "../user/pOut";
+import {pOut as pOutComment} from "../comment/pOut";
+import { User } from "../user/model";
 
 const mapInfo: TParam = {
     k: "mapInfo",
@@ -86,12 +88,16 @@ const fullInfo: TParam = {
     ]
 }
 
-export type TPOutKeys = "mapInfo" | 'suggestInfo' | 'announceInfo' | "fullInfo" | "pagesInfo"
+export type TPOutKeys = "mapInfo" | 'suggestInfo' | 'announceInfo' | "fullInfo" | "pagesInfo" | "pointsCreated" | "authorizedComment"
 export const pOut : {[k in TPOutKeys] : TParam} =  {
     mapInfo,
     suggestInfo,
     announceInfo,
     fullInfo,
 
+    pointsCreated: User.pointsCreated,
+
+    authorizedComment: {...pOutComment.comment, k: "authorizedComment", note: "комментарий авторизованного пользователя", isAuthOnly: true},
+    
     pagesInfo: commonPagesInfo,
 }
