@@ -1,7 +1,6 @@
 import {TParam} from "../../../dataTypes";
 import {commonId, CommonIdField} from "../../common/id";
 import {commonDates, CommonDatesFieldCreated} from "../../common/dates";
-import {User} from "../user/model";
 
 export type ImgFields = CommonIdField | CommonDatesFieldCreated |
     'creatorId' | 'userAvatarId' | 'postId' | 'offerId' | 'offerToPost' | 'commentId';
