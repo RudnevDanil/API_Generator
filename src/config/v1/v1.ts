@@ -5,6 +5,7 @@ import {source} from "./entities/source/group";
 import {postType} from "./entities/postType/group";
 import {comment} from "./entities/comment/group";
 import {img} from "./entities/img/group";
+import { offer } from "./entities/offer/group";
 
 export const navConfig : TMethodGroup[] = [
     user,
@@ -13,4 +14,5 @@ export const navConfig : TMethodGroup[] = [
     postType,
     comment,
     img,
+    offer,
 ]
