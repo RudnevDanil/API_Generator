@@ -1,5 +1,5 @@
 import {TMethod, TResponse} from "../../../../dataTypes";
-import {response_401, response_401_notHUser, response_500} from "../../../../responses";
+import {response_400, response_401, response_401_notHUser, response_500} from "../../../../responses";
 import {pOut} from "../pOut";
 import {isAll} from "../../../../pIn";
 
@@ -25,5 +25,5 @@ export const all : TMethod = {
     name: "Получение типов точек",
     shortName: "Все",
     params: [isAll],
-    responses: [successResponse, response_401, response_401_notHUser, response_500]
+    responses: [successResponse, response_400, response_401, response_401_notHUser, response_500]
 }

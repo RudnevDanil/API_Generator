@@ -40,7 +40,7 @@ export let update: TMethod = {
             pIn.userName,
             pIn.login,
             currentUser,
-        ]) as []
+        ]) as TParam[]
     ]),
     responses: [
         successResponse,

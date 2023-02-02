@@ -10,7 +10,7 @@ export let successResponse : TResponse = {
 export let delete_ : TMethod = {
     k: "delete",
     method: "delete",
-    name: "Удаление типа точки",
+    name: "Удаление предложения",
     note: "По факту - изменение active",
     shortName: "Удаление",
     isAuthOnly: true,
