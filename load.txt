@@ -1,0 +1,1 @@
+scp -r ./build/*  root@94.154.130.179:/usr/share/nginx/html/vanspot/api/docs
