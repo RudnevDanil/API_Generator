@@ -1,4 +1,4 @@
-import {TParam} from "../../dataTypes";
+import {TParam} from "../dataTypes";
 
 const fArray = [
     "water", "spring", "shower", "playground", "cafe",

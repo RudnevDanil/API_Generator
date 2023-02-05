@@ -1,6 +1,6 @@
 import {NavLink} from "react-router-dom";
 import React from "react";
-import {TMethod} from "../../config/dataTypes";
+import {TMethod} from "../../config/v1/dataTypes";
 import {center} from "../../functions";
 import {makeAuthOnlyIcon, makeHUserOnlyIcon, renderMethodType} from "../../pages/Home/Home";
 import {baseRoute} from "../../constants";

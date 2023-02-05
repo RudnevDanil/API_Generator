@@ -1,5 +1,5 @@
 import React from "react";
-import {TInParam} from "../../config/dataTypes";
+import {TInParam} from "../../config/v1/dataTypes";
 import {makeAuthOnlyIcon, makeHUserOnlyIcon, makeOptionalIcon} from "../../pages/Home/Home";
 import {center} from "../../functions";
 

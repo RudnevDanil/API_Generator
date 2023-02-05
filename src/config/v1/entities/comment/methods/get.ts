@@ -1,5 +1,5 @@
-import {TMethod, TResponse} from "../../../../dataTypes";
-import {response_400, response_500} from "../../../../responses";
+import {TMethod, TResponse} from "../../../dataTypes";
+import { responsesBucket } from "../../../responses/responses";
 import {pIn} from "../pIn";
 import {pOut} from "../pOut";
 
@@ -29,5 +29,5 @@ export const get : TMethod = {
         pIn.limit,
         pIn.offset,
     ],
-    responses: [successResponse, response_400, response_500]
+    responses: [successResponse, responsesBucket.wrongParams, responsesBucket.smthWentWrong]
 }

@@ -1,4 +1,4 @@
-import {TParam} from "../../../dataTypes";
+import {TParam} from "../../dataTypes";
 import {commonActive, CommonActiveField} from "../../common/active";
 import {commonId, CommonIdField} from "../../common/id";
 

@@ -1,4 +1,4 @@
-import {TParam} from "../../dataTypes";
+import {TParam} from "../dataTypes";
 
 export type CommonPagesInfoInnerFields = 'pageSize' | 'currentPage' | 'totalCount' | 'totalPages'
 export const commonPagesInfoInner : {[k in CommonPagesInfoInnerFields]: TParam} = {

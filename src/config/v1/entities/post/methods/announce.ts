@@ -1,5 +1,5 @@
-import {TMethod, TResponse} from "../../../../dataTypes";
-import {response_400, response_400_post_not_found, response_500} from "../../../../responses";
+import {TMethod, TResponse} from "../../../dataTypes";
+import { responsesBucket } from "../../../responses/responses";
 import {pOut} from "../pOut";
 
 export const successResponse : TResponse = {
@@ -15,5 +15,5 @@ export const announce : TMethod = {
     method: "get",
     name: "Получение краткого описания поста для превью",
     shortName: "Аннаунс",
-    responses: [successResponse, response_400, response_400_post_not_found, response_500]
+    responses: [successResponse, responsesBucket.wrongParams, responsesBucket.postNotFound, responsesBucket.smthWentWrong]
 }

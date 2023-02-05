@@ -1,12 +1,12 @@
-import {TParam} from "../../../dataTypes";
-import {activeOnly} from "../../../pIn";
+import {TParam} from "../../dataTypes";
+import {active} from "../../pIn";
 import {Offer, OfferFields} from "./model";
 import {commonPagination, CommonPaginationFields} from "../../common/pagination";
 
 export type TIn = 
     OfferFields | 
     CommonPaginationFields |
-    'activeOnly' | 'imgs' | 'remImgs';
+    'active' | 'imgs' | 'remImgs';
 
 export const pIn : {[k in TIn]?: TParam} = {
 
@@ -25,7 +25,7 @@ export const pIn : {[k in TIn]?: TParam} = {
 
     imgs: {k: 'imgsArray', type: "array", name: "массив изображений", isOptional: true},
 
-    activeOnly,
+    active,
     limit: commonPagination.limit,
     offset: commonPagination.offset,
 }

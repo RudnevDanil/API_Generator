@@ -1,11 +1,5 @@
-import {TMethod, TParam, TResponse} from "../../../../dataTypes";
-import {
-    response_400, response_400_comment_not_found,
-    response_400_post_not_found,
-    response_401,
-    response_403,
-    response_500
-} from "../../../../responses";
+import {TMethod, TParam, TResponse} from "../../../dataTypes";
+import { responsesBucket } from "../../../responses/responses";
 import {pIn} from "../pIn";
 import {pOut} from "../pOut";
 
@@ -28,10 +22,10 @@ export let delete_ : TMethod = {
     ],
     responses: [
         successResponse,
-        response_400,
-        response_400_post_not_found,
-        response_401,
-        response_403,
-        response_500
+        responsesBucket.wrongParams,
+        responsesBucket.postNotFound,
+        responsesBucket.unauthorized,
+        responsesBucket.createdByAnotherUser,
+        responsesBucket.smthWentWrong
     ]
 }

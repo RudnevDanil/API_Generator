@@ -1,5 +1,5 @@
-import {TMethod, TResponse} from "../../../../dataTypes";
-import {response_401, response_401_notHUser, response_500} from "../../../../responses";
+import {TMethod, TResponse} from "../../../dataTypes";
+import { responsesBucket } from "../../../responses/responses";
 import {pOut} from "../pOut";
 
 export const successResponse : TResponse = {
@@ -18,5 +18,5 @@ export const get : TMethod = {
     isAuthOnly: true,
     isHUserOnly: true,
     params: [],
-    responses: [successResponse, response_401, response_401_notHUser, response_500]
+    responses: [successResponse, responsesBucket.unauthorized, responsesBucket.notHUser, responsesBucket.smthWentWrong]
 }

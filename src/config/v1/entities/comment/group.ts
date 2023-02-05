@@ -1,4 +1,4 @@
-import {TMethodGroup, TResponse} from "../../../dataTypes";
+import {TMethodGroup, TResponse} from "../../dataTypes";
 import {get} from "./methods/get";
 import {create} from "./methods/create";
 import {update} from "./methods/update";

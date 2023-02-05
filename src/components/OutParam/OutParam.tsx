@@ -1,5 +1,5 @@
 import React from "react";
-import {TOutParam, TOutParamTypes} from "../../config/dataTypes";
+import {TOutParam, TOutParamTypes} from "../../config/v1/dataTypes";
 import {center} from "../../functions";
 import {makeAuthOnlyIcon, makeBracketIconIcon, makeHUserOnlyIcon, makeOptionalIcon} from "../../pages/Home/Home";
 import {colors} from "../../constants";

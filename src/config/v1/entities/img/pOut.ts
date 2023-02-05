@@ -1,4 +1,4 @@
-import {TParam} from "../../../dataTypes";
+import {TParam} from "../../dataTypes";
 import {Img} from "./model";
 import {pOut as pOutUser} from "../user/pOut";
 import {commonPagesInfo} from "../../common/pagesInfo";

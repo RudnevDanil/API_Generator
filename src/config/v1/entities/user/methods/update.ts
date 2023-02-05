@@ -1,8 +1,8 @@
-import {TMethod, TParam, TResponse} from "../../../../dataTypes";
-import {response_400, response_401, response_401_notHUser, response_500} from "../../../../responses";
+import {TMethod, TParam, TResponse} from "../../../dataTypes";
 import {pIn} from "../pIn";
-import {allHUserOnly, allOptional} from "../../../../functions";
+import {allHUserOnly, allOptional} from "../../../functions";
 import {pOut} from "../pOut";
+import { responsesBucket } from "../../../responses/responses";
 
 export let successResponse : TResponse = {
     code: 200,
@@ -44,9 +44,9 @@ export let update: TMethod = {
     ]),
     responses: [
         successResponse,
-        response_400,
-        response_401,
-        response_401_notHUser,
-        response_500
+        responsesBucket.wrongParams,
+        responsesBucket.unauthorized,
+        responsesBucket.notHUser,
+        responsesBucket.smthWentWrong,
     ]
 }

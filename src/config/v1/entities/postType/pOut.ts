@@ -1,4 +1,4 @@
-import {TParam} from "../../../dataTypes";
+import {TParam} from "../../dataTypes";
 import {PostType} from "./model";
 
 export type TPOutKeys = "postType" | "flags"

@@ -1,4 +1,4 @@
-import {TParam} from "../../../dataTypes";
+import {TParam} from "../../dataTypes";
 import {Source} from "./model";
 
 export type TPOutKeys = "source" | "flags"

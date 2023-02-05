@@ -1,10 +1,5 @@
-import {TMethod, TResponse} from "../../../../dataTypes";
-import {
-    response_400,
-    response_400_post_not_found,
-    response_401,
-    response_500
-} from "../../../../responses";
+import {TMethod, TParam, TResponse} from "../../../dataTypes";
+import { responsesBucket } from "../../../responses/responses";
 import {pIn} from "../pIn";
 import {pOut} from "../pOut";
 
@@ -15,12 +10,6 @@ export let successResponse : TResponse = {
         pOut.pointsCreated,
     ],
     note: "Успешный ответ"
-}
-
-const response_409_post_already_exist : TResponse = {
-    code: 409,
-    msg: 'there are some posts near',
-    note: "Возле этой точки уже есть посты"
 }
 
 export let create : TMethod = {
@@ -44,10 +33,10 @@ export let create : TMethod = {
     ],
     responses: [
         successResponse,
-        response_400,
-        response_400_post_not_found,
-        response_401,
-        response_409_post_already_exist,
-        response_500,
+        responsesBucket.wrongParams,
+        responsesBucket.postNotFound,
+        responsesBucket.unauthorized,
+        responsesBucket.postAlreadyExist,
+        responsesBucket.smthWentWrong,
     ]
 }

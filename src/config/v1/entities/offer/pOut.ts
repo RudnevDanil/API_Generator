@@ -1,4 +1,4 @@
-import {TParam} from "../../../dataTypes";
+import {TParam} from "../../dataTypes";
 import {Offer} from "./model";
 import {commonPagesInfo, CommonPagesInfoFields} from "../../common/pagesInfo";
 import { getCommonDatesParam } from "../../common/dates";
