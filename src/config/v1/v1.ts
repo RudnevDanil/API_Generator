@@ -1,4 +1,4 @@
-import {TMethodGroup} from "../dataTypes";
+import {TMethodGroup} from "./dataTypes";
 import {user} from "./entities/user/group";
 import {post} from "./entities/post/group";
 import {source} from "./entities/source/group";

@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {Tooltip} from "@mui/material";
-import {TResponse} from "../../config/dataTypes";
+import {TResponse} from "../../config/v1/dataTypes";
 import {colors} from "../../constants";
 import {center} from "../../functions";
 import {OutParam} from "../OutParam/OutParam";

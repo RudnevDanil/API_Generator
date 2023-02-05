@@ -4,7 +4,7 @@ import {center} from "../../functions";
 //import { ReactComponent as Logo } from "../../imgs/swords.svg"
 import {baseRoute, colors} from "../../constants";
 import {Tooltip} from "@mui/material";
-import {TMethodGroup} from "../../config/dataTypes";
+import {TMethodGroup} from "../../config/v1/dataTypes";
 import {Path} from "../../components/Path/Path";
 import {NavConfigTreeElement} from "../../components/NavConfigTreeElement/NavConfigTreeElement";
 
@@ -89,6 +89,7 @@ export let renderMethodType = (method: 'get' | 'post' | 'put' | 'delete') => {
 
 export default function Home({navConfig}: {navConfig: TMethodGroup[]}){
 
+    console.log("navConfig: ", navConfig)
     const [openedBlocks, setOpenedBlocks] = useState<string[]>([])
     const changeOpenStatus = (k: string) => setOpenedBlocks(prev => (
         prev.includes(k) ? prev.filter(el => el !== k) : [...prev, k]

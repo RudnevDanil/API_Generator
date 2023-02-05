@@ -1,8 +1,8 @@
-import {TMethod, TResponse} from "../../../../dataTypes";
-import {response_400, response_401, response_401_notHUser, response_500} from "../../../../responses";
+import {TMethod, TResponse} from "../../../dataTypes";
+import { responsesBucket } from "../../../responses/responses";
 import {pIn} from "../pIn";
 import {pOut} from "../pOut";
-import {allOptional} from "../../../../functions";
+import {allOptional} from "../../../functions";
 
 export let successResponse : TResponse = {
     code: 200,
@@ -24,5 +24,5 @@ export let update : TMethod = {
         pIn.badge,
         pIn.icon,
     ]),
-    responses: [successResponse, response_400, response_401, response_401_notHUser, response_500]
+    responses: [successResponse, responsesBucket.wrongParams, responsesBucket.unauthorized, responsesBucket.notHUser, responsesBucket.smthWentWrong]
 }

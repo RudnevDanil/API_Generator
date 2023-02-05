@@ -1,4 +1,4 @@
-import {TMethodGroup} from "../../../dataTypes";
+import {TMethodGroup} from "../../dataTypes";
 import {byId} from "./methods/byId";
 import {imgsInfo} from "./methods/imgsInfo";
 

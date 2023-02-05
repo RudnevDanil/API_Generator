@@ -1,4 +1,4 @@
-import {TMethod, TMethodGroup} from "../../config/dataTypes";
+import {TMethod, TMethodGroup} from "../../config/v1/dataTypes";
 import React from "react";
 import {colors} from "../../constants";
 import {Method} from "../Method/Method";

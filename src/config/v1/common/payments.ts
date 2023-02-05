@@ -1,4 +1,4 @@
-import {TParam} from "../../dataTypes";
+import {TParam} from "../dataTypes";
 
 export type CommonPaymentsFieldIsPaid = 'isPaid'
 export type CommonPaymentsFieldPaymentText = 'paymentText'

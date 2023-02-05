@@ -1,7 +1,7 @@
-import {TMethod, TResponse} from "../../../../dataTypes";
-import {response_400, response_401, response_401_notHUser, response_500} from "../../../../responses";
+import {TMethod, TResponse} from "../../../dataTypes";
+import { responsesBucket } from "../../../responses/responses";
 import {pOut} from "../pOut";
-import {isAll} from "../../../../pIn";
+import {isAll} from "../../../pIn";
 
 export const successResponse : TResponse = {
     code: 200,
@@ -25,5 +25,5 @@ export const all : TMethod = {
     name: "Получение типов точек",
     shortName: "Все",
     params: [isAll],
-    responses: [successResponse, response_400, response_401, response_401_notHUser, response_500]
+    responses: [successResponse, responsesBucket.wrongParams, responsesBucket.unauthorized, responsesBucket.notHUser, responsesBucket.smthWentWrong]
 }

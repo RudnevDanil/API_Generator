@@ -1,5 +1,5 @@
-import {TMethod, TParam, TResponse} from "../../../../dataTypes";
-import {response_400, response_401, response_500} from "../../../../responses";
+import {TMethod, TParam, TResponse} from "../../../dataTypes";
+import { responsesBucket } from "../../../responses/responses";
 import {User} from "../model";
 import {pIn} from "../../source/pIn";
 
@@ -16,5 +16,5 @@ export let delete_ : TMethod = {
     shortName: "Удаление",
     isAuthOnly: true,
     params: [{...pIn.active as TParam, isOptional: true, defaultValue: false}],
-    responses: [successResponse, response_400, response_401, response_500]
+    responses: [successResponse, responsesBucket.wrongParams, responsesBucket.unauthorized, responsesBucket.smthWentWrong]
 }

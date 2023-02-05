@@ -1,12 +1,7 @@
-import {TMethod, TParam, TResponse} from "../../../../dataTypes";
-import {
-    response_400,
-    response_400_comment_not_found,
-    response_400_post_not_found,
-    response_500
-} from "../../../../responses";
+import {TMethod, TParam, TResponse} from "../../../dataTypes";
+import { responsesBucket } from "../../../responses/responses";
 import {pOut} from "../pOut";
-import {allOptional} from "../../../../functions";
+import {allOptional} from "../../../functions";
 import {pIn} from "../pIn";
 
 export const successResponse : TResponse = {
@@ -34,5 +29,5 @@ export const imgsInfo : TMethod = {
         pIn.limit,
         pIn.offset,
     ],
-    responses: [successResponse, response_400, response_400_post_not_found, response_400_comment_not_found, response_500]
+    responses: [successResponse, responsesBucket.wrongParams, responsesBucket.postNotFound, responsesBucket.commentNotFound, responsesBucket.smthWentWrong]
 }

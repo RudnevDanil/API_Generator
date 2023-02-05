@@ -1,5 +1,5 @@
 import React from "react";
-import {TMethodGroup} from "../../config/dataTypes";
+import {TMethodGroup} from "../../config/v1/dataTypes";
 import {center} from "../../functions";
 import {MethodShort} from "../MethodShort/MethodShort";
 

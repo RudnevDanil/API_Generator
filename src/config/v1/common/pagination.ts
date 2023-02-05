@@ -1,4 +1,4 @@
-import {TParam} from "../../dataTypes";
+import {TParam} from "../dataTypes";
 
 export type CommonPaginationFields = 'limit' | 'offset'
 export const commonPagination: {[k in CommonPaginationFields]: TParam} = {

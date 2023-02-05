@@ -1,4 +1,4 @@
-import {TMethodGroup} from "../../../dataTypes";
+import {TMethodGroup} from "../../dataTypes";
 import {all} from "./methods/all";
 import {login} from "./methods/login";
 import {logout} from "./methods/logout";

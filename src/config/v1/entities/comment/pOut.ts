@@ -1,4 +1,4 @@
-import {TParam} from "../../../dataTypes";
+import {TParam} from "../../dataTypes";
 import {Comment} from "./model";
 import {getCommonDatesParam} from "../../common/dates";
 import {User} from "../user/model";

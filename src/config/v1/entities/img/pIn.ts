@@ -1,4 +1,4 @@
-import {TParam} from "../../../dataTypes";
+import {TParam} from "../../dataTypes";
 import {Img, ImgFields} from "./model";
 import {commonPagination, CommonPaginationFields} from "../../common/pagination";
 

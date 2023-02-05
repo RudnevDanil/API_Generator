@@ -1,8 +1,8 @@
-import {TParam} from "../../../dataTypes";
+import {TParam} from "../../dataTypes";
 import {Post} from "./model";
 import {commonPagesInfo} from "../../common/pagesInfo";
 import {commonPayments} from "../../common/payments";
-import {allHUserOnly} from "../../../functions";
+import {allHUserOnly} from "../../functions";
 
 import {pOut as pOutImg} from "../img/pOut";
 import {pOut as pOutUser} from "../user/pOut";
